@@ -1,7 +1,8 @@
 class RequestsController < ApplicationController
 
   def index
-    @requests = Request.order("id DESC").all
+    @requests = Request.select("*").joins(:user).order("id DESC")
+    puts(@requests)
   end
   def new
     @request = Request.new

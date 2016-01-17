@@ -6,10 +6,15 @@
         <h2><%= @request.PlaceName	  %></h2>
       </div>
       <div class="box-body">
+        <div class="list-group">
         <% @items.each do |f| %>
+            <div class="list-group-item">
             <%= f.ItemsName	  %>
             <%= f.ItemDescription  %>
+            </div>
         <%	 end  %>
+
+        </div>
   </div>
 
 </div>
