@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
     2.times {@request.items.build}
 
     @category = Category.all
+    @testing = "Sterling,VA"
   end
 
   def create
@@ -29,8 +30,11 @@ class RequestsController < ApplicationController
 
   private
   def request_params
+    # locate current user to user_id
     params[:request][:user_id] = current_user.uuid
-    params.require(:request).permit(:user_id, :LocId, :PlaceName, :StatId, :CatId, items_attributes: [ :ItemsName, :ItemDescription, :_destroy ])
+    # firstime request StatId = 1 "Open"
+    params[:request][:StatId] = 1
+    params.require(:request).permit(:user_id, :LocId, :PlaceName, :StatId, :CatId, items_attributes: [ :ItemsName, :ItemDescription ])
   end
 
 end

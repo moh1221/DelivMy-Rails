@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       logger.info "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 
     else
+      flash.now.alert = "Invalid email or password"
       redirect_to '/login'
     end
   end

@@ -4,32 +4,35 @@
   <div class="box-body">
 
     <%= form_for (@request) do |f| %>
-        <div class="form-group has-feedback">
-        <%= f.text_field :PlaceName, :class => 'form-control', :placeholder => 'Place Name'	  %>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-        <%= f.text_field :LocId, :class => 'form-control', :placeholder => 'Location Id'	  %>
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-        <%= f.text_field :StatId, :class => 'form-control', :placeholder => 'StatId'	  %>
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
 
         <div class="form-group">
-        <%= f.collection_select :CatId, @category, :id, :CatName, :class => 'form-control'%>
+          <%= f.label "Step 1: Select Category" %>
+          <%= f.collection_select :CatId, @category, :id, :CatName, :class => 'form-control'%>
         </div>
-        Items:
-        <ul>
-          <%= f.fields_for :items do |items_form| %>
-              <li>
-                <%= items_form.check_box :_destroy%>
-                <%= items_form.text_field :ItemsName, :class => 'form-control', :placeholder => 'Item'	 %>
-                <%= items_form.text_field :ItemDescription, :class => 'form-control', :placeholder => 'Description'	 %>
-              </li>
-          <% end %>
-        </ul>
+        <div class="form-group has-feedback">
+          <%= f.label "Step 2: Select Place Name" %>
+        <%= f.text_field :PlaceName, @testing, :class => 'form-control', :placeholder => 'Place Name'	  %>
+          <span class="glyphicon glyphicon-plus-sign form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <%= f.label "Step 3: Select Location" %>
+        <%= f.text_field :LocId, :class => 'form-control', :placeholder => 'Location Id'	  %>
+        <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+        </div>
+
+
+        <div class="form-group has-feedback">
+          <%= f.label "Step 4: Add Items" %>
+          <ul class="list-group">
+            <%= f.fields_for :items do |items_form| %>
+                <li>
+                  <%= render "items_fields", :f => items_form  %>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+
+
         <%= f.submit "Add Request" %>
     <% end %>
 
