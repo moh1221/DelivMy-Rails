@@ -1,0 +1,42 @@
+<div class="container">
+<div class="box box-info">
+  <div class="box-header">Submit Request</div>
+  <div class="box-body">
+
+    <%= form_for (@request) do |f| %>
+        <div class="form-group has-feedback">
+        <%= f.text_field :PlaceName, :class => 'form-control', :placeholder => 'Place Name'	  %>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+        <%= f.text_field :LocId, :class => 'form-control', :placeholder => 'Location Id'	  %>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+        <%= f.text_field :StatId, :class => 'form-control', :placeholder => 'StatId'	  %>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+        <%= f.text_field :CatId, :class => 'form-control', :placeholder => 'Cat Id'	  %>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+
+        Items:
+        <ul>
+          <%= f.fields_for :items do |items_form| %>
+              <li>
+                <%= items_form.check_box :_destroy%>
+                <%= items_form.text_field :ItemsName, :class => 'form-control', :placeholder => 'Item'	 %>
+                <%= items_form.text_field :ItemDescription, :class => 'form-control', :placeholder => 'Description'	 %>
+              </li>
+          <% end %>
+        </ul>
+        <%= f.submit "Add Request" %>
+    <% end %>
+
+  </div>
+
+</div>
+
+</div>
+

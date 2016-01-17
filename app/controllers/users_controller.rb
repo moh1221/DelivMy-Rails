@@ -17,11 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find_by(params[:id])
+    @user = current_user
     @user.update_attributes(user_params)
     redirect_to user_path
   end

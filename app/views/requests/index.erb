@@ -1,0 +1,9 @@
+<div class="container">
+  <% @requests.each do |f| %>
+      <div class="box box-info">
+        <div class="box-header"><%= f.PlaceName	  %></div>
+        <div class="box-body"><%= f.LocId  %></div>
+        <%= link_to "Info", request_path(f), :class => 'btn btn-primary' %>
+      </div>
+  <%	 end  %>
+</div>
