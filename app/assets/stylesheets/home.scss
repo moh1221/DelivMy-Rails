@@ -1,0 +1,37 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.backg{
+  background-color: #c00;
+  background-image: -moz-radial-gradient(left top, circle, #ff003f 0%, #cc0038 60%);
+  background-image: -webkit-gradient(radial, 0 0, 1, 0 0, 500, from(#ff003f), to(#cc0038));
+}
+.textColumn {
+  //position: absolute;
+  //height: 90%;
+  //width: 100%;
+  //bottom: 0px;
+  //left: 0px;
+  text-align: center;
+  color:white;
+  font-family: "Marker Felt";
+  padding-top: 10em;
+
+
+  //background-color: #c00;
+  //background-image: -moz-radial-gradient(left top, circle, #f09 0%, #CC0069 60%);
+  //background-image: -webkit-gradient(radial, 0 0, 1, 0 0, 500, from(#F09), to(#CC0069));
+}
+
+h1 {
+  font-size: 500% !important;
+  font-weight: normal !important;
+  margin-bottom: 0em !important;
+}
+p{
+  font-size: 200% !important;
+}
+
+//span{
+//  font-size: 35px !important;
+//}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DelivMyApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="backg">
+<div class="header">
+  <div class="container-fluid">
+    <!--<%= link_to(root_path) do %>-->
+        <!--<h1>Deliv<span class="dark">My</span></h1>-->
+    <!--<% end %>-->
+
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <!-- Your code here -->
+            <% if current_user %>
+                <ul class="nav navbar-nav">
+                  <li><%= current_user.email %></li>
+                  <li><%= link_to "settings", user_path(current_user.id) %></li>
+                  <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+                </ul>
+            <% else %>
+                <ul class="nav navbar-nav">
+                  <li><a><%= link_to "Login", 'login' %></a></li>
+                <li><a><%= link_to "Signup", 'signup' %></a></li>
+                </ul>
+            <% end %>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+
+  </div>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
