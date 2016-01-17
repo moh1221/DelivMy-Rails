@@ -8,7 +8,6 @@ class RequestsController < ApplicationController
     2.times {@request.items.build}
 
     @category = Category.all
-    @testing = "Sterling,VA"
   end
 
   def create
