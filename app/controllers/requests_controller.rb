@@ -2,11 +2,12 @@ class RequestsController < ApplicationController
 
   def index
     @requests = Request.select("*").joins(:user).order("id DESC")
-    puts(@requests)
   end
   def new
     @request = Request.new
     2.times {@request.items.build}
+
+    @category = Category.all
   end
 
   def create

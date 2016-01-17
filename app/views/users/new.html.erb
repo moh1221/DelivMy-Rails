@@ -4,6 +4,7 @@
     <!-- Your form here -->
     <%= form_for(@user) do |f| %>
 
+
         <div class="form-group has-feedback">
         <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'First Name' %>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -29,15 +30,21 @@
           <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
 
+        <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <span style="color: red">
+                <%= pluralize(@user.errors.count, "error") %> prohibited
+                this user from being added:
+              </span>
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                    <li style="color: red"><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
         <%= f.submit "Create my account", :class => 'btn btn-primary btn-block btn-flat' %>
     <% end %>
-    <% if @user.errors.any? %>
-        <ul class="Signup_Errors">
-          <% for message_error in @user.errors.full_messages %>
-              <li>* <%= message_error %></li>
-          <% end %>
-        </ul>
-    <% end %>
-
   </div>
 </div>

@@ -6,13 +6,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    @user = User.create(user_params)
 
-    if user.save
+    if @user.save
       redirect_to root_path
     else
-      flash[:notice] = 'fail'
-      redirect_to signup_path
+      puts(@user.errors.any?)
+      puts(@user.errors.count)
+      puts(@user.errors.full_messages)
+      # redirect_to signup_path
+      render 'new'
     end
   end
 
