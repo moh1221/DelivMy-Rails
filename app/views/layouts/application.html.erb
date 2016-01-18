@@ -6,50 +6,53 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
-<body class="backg">
-<div class="">
-  <div class="">
-
-    <nav class="navbar navbar-default">
-
-      <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">DelivMy</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <!-- Your code here -->
-            <% if current_user %>
-                <ul class="nav navbar-nav">
-                  <li><%= link_to "All Requests", requests_path	  %></li>
-                  <li><%= link_to "Add Requests", requests_new_path	  %></li>
-
-                  </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#"><%= current_user.email %></a></li>
-                  <li><%= link_to "settings", user_path %></li>
-                  <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-                </ul>
-            <% else %>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to "Login", 'login' %></li>
-                <li><%= link_to "Signup", 'signup' %></li>
-                </ul>
-            <% end %>
-          </a>
-        </div>
+<body  id="page-top" class="index">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">DelivMy App</a>
       </div>
-    </nav>
 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <% if current_user %>
+            <ul class="nav navbar-nav">
+              <li class="page-scroll"><%= link_to "All Requests", requests_path	  %></li>
+              <li class="page-scroll"><%= link_to "Add Requests", requests_new_path	  %></li>
 
-  </div>
-</div>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="hidden">
+                <a href="#page-top"></a>
+              </li>
+              <li class="page-scroll"><a href="#"><%= current_user.email %></a></li>
+              <li class="page-scroll"><%= link_to "settings", user_path %></li>
+              <li class="page-scroll"><%= link_to "Log out", logout_path, method: "delete" %></li>
+            </ul>
+        <% else %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="hidden">
+                <a href="#page-top"></a>
+              </li>
+              <li class="page-scroll"><%= link_to "Login", 'login' %></li>
+              <li class="page-scroll"><%= link_to "Signup", 'signup' %></li>
+            </ul>
+        <% end %>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
 
 <%= yield %>
 
