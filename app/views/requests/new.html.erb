@@ -15,10 +15,17 @@
         <%= f.text_field :PlaceName, :class => 'form-control', :placeholder => 'Place Name'	  %>
           <span class="glyphicon glyphicon-plus-sign form-control-feedback"></span>
         </div>
+
+
         <div class="form-group has-feedback">
           <%= f.label "Step 3: Select Location" %>
-        <%= f.text_field :LocId, :class => 'form-control', :placeholder => 'Search'	  %>
-        <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+          <ul class="list-group">
+            <%= f.fields_for :location do |location_form| %>
+                <li>
+                  <%= render "location_fields", :f => location_form  %>
+                </li>
+            <% end %>
+          </ul>
         </div>
 
 
@@ -51,7 +58,6 @@
 
         <%= f.submit "Add Request", :class => 'btn btn-success' %>
     <% end %>
-
   </div>
 
 </div>

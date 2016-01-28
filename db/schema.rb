@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120010345) do
+ActiveRecord::Schema.define(version: 20160128055122) do
 
   create_table "categories", force: :cascade do |t|
     t.string "CatName", limit: 255, null: false
@@ -25,9 +25,29 @@ ActiveRecord::Schema.define(version: 20160120010345) do
     t.datetime "updated_at",                    null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.integer  "request_id", limit: 4,   null: false
+    t.string   "address",    limit: 255, null: false
+    t.float    "Lat",        limit: 24,  null: false
+    t.float    "Long",       limit: 24,  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "user_id",    limit: 255
+    t.string   "address",    limit: 255
+    t.string   "city",       limit: 255
+    t.string   "state",      limit: 255
+    t.string   "zipcode",    limit: 255
+    t.string   "imageName",  limit: 255
+    t.string   "phone",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "requests", force: :cascade do |t|
     t.string   "user_id",     limit: 255,                null: false
-    t.integer  "LocId",       limit: 4,                  null: false
     t.string   "PlaceName",   limit: 255,                null: false
     t.integer  "StatId",      limit: 4,                  null: false
     t.integer  "CatId",       limit: 4,                  null: false
