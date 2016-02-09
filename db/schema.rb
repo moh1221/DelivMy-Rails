@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128055122) do
+ActiveRecord::Schema.define(version: 20160131232117) do
 
   create_table "categories", force: :cascade do |t|
     t.string "CatName", limit: 255, null: false
+  end
+
+  create_table "delivers", force: :cascade do |t|
+    t.integer  "request_id",   limit: 4,   null: false
+    t.string   "user_id",      limit: 255, null: false
+    t.integer  "deliv_Status", limit: 4,   null: false
+    t.string   "receipt_img",  limit: 255
+    t.datetime "completed_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -35,13 +45,12 @@ ActiveRecord::Schema.define(version: 20160128055122) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "user_id",    limit: 255
-    t.string   "address",    limit: 255
-    t.string   "city",       limit: 255
-    t.string   "state",      limit: 255
-    t.string   "zipcode",    limit: 255
-    t.string   "imageName",  limit: 255
-    t.string   "phone",      limit: 255
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.string   "picture",    limit: 255
+    t.string   "home",       limit: 255
+    t.string   "work",       limit: 255
+    t.string   "user_id",    limit: 255, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -56,6 +65,10 @@ ActiveRecord::Schema.define(version: 20160128055122) do
     t.decimal  "cost",                    precision: 10
     t.decimal  "fees",                    precision: 10
     t.datetime "delivery_at"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "status", limit: 255
   end
 
   create_table "users", id: false, force: :cascade do |t|

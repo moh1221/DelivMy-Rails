@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  get 'requests/new'
+  get '/profiles' => 'profiles#index'
 
-  get 'requests/show'
+  get 'profiles/new' => 'profiles#new'
+  post 'profiles/new' => 'profiles#create'
+
+  # get 'requests/new'
+  #
+  # get 'requests/show'
 
   get 'signup' => 'users#new'
   get 'user' => 'users#show'

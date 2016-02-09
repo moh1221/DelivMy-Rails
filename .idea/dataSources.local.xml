@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails DelivMyApp: production" uuid="06b7efde-ba4e-4135-9893-f9b2942f1672">
+      <user-name>&lt;%= ENV['RDS_USERNAME'] %&gt;</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddff8dfeedff9dff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+    <data-source name="Rails DelivMyApp: development" uuid="20144e45-9138-4af2-9490-59a23c6ed657">
+      <first-sync>true</first-sync>
+      <user-name>devlimy</user-name>
+      <user-password>dfe8dfc5dfc5dfdedfd9dfdedfd8dfcbdfdadf93df93</user-password>
+    </data-source>
+  </component>
+</project>

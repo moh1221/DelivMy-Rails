@@ -32,3 +32,6 @@ $ ->
         $("#LongInfo").val(data.results[0].geometry.location.lng)
       error: (jqXHR, textStatus, errorThrown) ->
         console.log(errorThrown)
+
+
+

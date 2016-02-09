@@ -31,6 +31,17 @@
           <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
 
+        <div class="form-group has-feedback">
+          <%= f.label "Optional Info" %>
+          <ul class="list-group">
+            <%= f.fields_for :profile do |profile_form| %>
+                <li>
+                  <%= render "profile_fields", :f => profile_form  %>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+
         <% if @user.errors.any? %>
             <div id="error_explanation">
               <span style="color: red">
