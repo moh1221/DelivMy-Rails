@@ -39,3 +39,27 @@
   border-bottom-left-radius: 3px;
   padding: 10px;
 }
+
+//list request show
+.products-list {
+  //list-style: none;
+  margin: 0;
+  //padding: 0;
+}
+.products-list .product-description {
+  display: block;
+  color: #999;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.products-list .product-info {
+  margin-left: 20px;
+}
+.products-list .product-title {
+  font-weight: 600;
+}
+
+.with-border {
+  border-bottom: 1px solid #f4f4f4;
+}

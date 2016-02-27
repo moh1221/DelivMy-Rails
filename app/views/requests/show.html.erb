@@ -3,21 +3,47 @@
 
 
   <div class="box box-info">
-      <div class="box-header">
-        <h2><%= @request.PlaceName	  %></h2>
-      </div>
-      <div class="box-body">
-        <div class="list-group">
-        <% @items.each do |f| %>
-            <div class="list-group-item">
-            <%= f.ItemsName	  %>
-            <%= f.ItemDescription  %>
-            </div>
-        <%	 end  %>
-
+      <div class="box-header with-border">
+        <div>
+          <label for="place">Place Name:</label>
+          <h4 id="place"><%= @request.PlaceName	  %></h4>
         </div>
-  </div>
+      </div>
+      <div class="box-body with-border">
+          <div class="col-md-6">
+            <label for="cost">Cost: </label> <span id="cost" class="label label-primary">$ <%= @request.cost %></span>
+          </div>
+          <div class="col-md-6">
+            <label for="fees">Deliv Pay: </label> <span id="fees" class="label label-success">$ <%= @request.fees %></span>
+          </div>
+        <div class="list-group">
+            <lable>Items:</lable>
+              <ol class="products-list product-list-in-box">
+                <% @items.each do |f| %>
+                <li class="item">
+              <div class="product-info">
+                <a class="product-title"><%= f.ItemsName	  %></a>
+                        <span class="product-description">
+                          <%= f.ItemDescription  %>
+                        </span>
+              </div>
+                    </li>
+                <%	 end  %>
+              </ol>
+        </div>
+        <div class="section">
+          <label for="address">Address: </label>
+          <div id="address"><%= @location.address	  %></div>
+        </div>
+      </div>
+    <div class="box-header">
+      <div class="section" style="padding: 5px">
+        <span><i class="glyphicon glyphicon-time"></i> within <%= @request.delivery_at %></span>
+        <a class="btn btn-sm btn-danger pull-right">Take It!</a>
+      </div>
 
+    </div>
 </div>
+
   </div>
   </header>
