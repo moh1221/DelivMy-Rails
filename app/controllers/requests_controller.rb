@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :require_user, only: [:new, :create]
 
   def index
-    @requests = Request.select("*").where('delivery_at > ?', DateTime.now).joins(:user).order("id DESC")
+    @requests = Request.select("*").where('delivery_at > ? and user_id != ?', DateTime.now, current_user).joins(:user).order("id DESC")
   end
   def new
     @request = Request.new
@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
 
     if @request.save
-      redirect_to root_path
+      redirect_to '/requests'
     else
       redirect_to request_path
     end

@@ -3,13 +3,13 @@
 <head>
   <title>DelivMyApp</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application',params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
-<body  id="page-top" class="index">
+<body  id="page-top" class="<%= controller_name %> <%= action_name %>">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,9 +35,10 @@
               <li class="hidden">
                 <a href="#page-top"></a>
               </li>
-              <li class="page-scroll"><a href="#"><%= current_user.email %></a></li>
-              <li class="page-scroll"><%= link_to "settings", user_path %></li>
-              <li class="page-scroll"><%= link_to "Log out", logout_path, method: "delete" %></li>
+
+              <li class="page-scroll small"><a><%= current_user.email %></a></li>
+              <li class="page-scroll small"><%= link_to "<span><i class='glyphicon glyphicon-cog'></i> Setting</span>".html_safe, user_path %></li>
+              <li class="page-scroll small"><%= link_to "<span><i class='glyphicon glyphicon-lock'></i> Log out</span>".html_safe, logout_path, method: "delete" %></li>
             </ul>
         <% else %>
             <ul class="nav navbar-nav navbar-right">

@@ -1,7 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$ ->
+window.App ||= {}
+
+App.init =  ->
   Lat = 38
   Long = -78.5
   applyLocation = (location) ->
@@ -32,6 +34,10 @@ $ ->
         $("#LongInfo").val(data.results[0].geometry.location.lng)
       error: (jqXHR, textStatus, errorThrown) ->
         console.log(errorThrown)
+
+$(document).on "page:change", ->
+  return unless $(".requests.new").length > 0
+  App.init()
 
 
 
