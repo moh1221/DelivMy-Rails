@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 window.App ||= {}
 
-App.init =  ->
+App.newPage =  ->
   Lat = 38
   Long = -78.5
   applyLocation = (location) ->
@@ -21,7 +21,6 @@ App.init =  ->
         console.log(errorThrown)
 
   navigator.geolocation.getCurrentPosition applyLocation
-  false
 
   $("#AddInfo").blur ->
     address = $("#AddInfo").val()
@@ -35,9 +34,60 @@ App.init =  ->
       error: (jqXHR, textStatus, errorThrown) ->
         console.log(errorThrown)
 
+App.showPage = ->
+  updateTimer = (input) ->
+    mytime = input
+    mytime = new Date(mytime)
+    if (mytime != undefined)
+      end = new Date(mytime)
+      _second = 1000
+      _minute = _second * 60
+      _hour = _minute * 60
+      _day = _hour * 24
+      now = new Date()
+      distance = end - now
+      if (distance < 0)
+        'EXPIRED!'
+
+      days = Math.floor(distance / _day)
+      hours = Math.floor((distance % _day) / _hour)
+      minutes = Math.floor((distance % _hour) / _minute)
+      if (days > 0)
+        dd = ""
+        if (days == 1)
+          dd = 'within ' + days + ' day'
+        else
+          dd = 'within ' + days + ' days'
+        dd
+      else if (days == 0 && hours > 0)
+        hh = ""
+        if (days == 1)
+          hh = 'within ' + hours + ' hour'
+        else
+          hh = 'within ' + hours + ' hours'
+        hh
+      else if (days == 0 && hours == 0 && minutes > 0)
+        mm = ""
+        if (days == 1)
+          mm = 'within ' + minutes + ' minute'
+        else
+          mm = 'within ' + minutes + ' minutes'
+        mm
+    else
+      'Invalid!'
+
+  $( "#timerInfo" ).text (v, e)->
+    updateTimer(e)
+
+
 $(document).on "page:change", ->
-  return unless $(".requests.new").length > 0
-  App.init()
+  App.newPage() if $(".requests.new").length > 0
+  App.showPage() if $(".requests.show").length > 0
+
+
+
+
+
 
 
 
