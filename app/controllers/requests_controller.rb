@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
 
-  before_action :require_user, only: [:new, :create]
+  before_action :require_user, only: [:index, :new, :create]
 
   def index
     @requests = Request.select("*").where('delivery_at > ? and user_id != ?', DateTime.now, current_user).joins(:user).order("id DESC")

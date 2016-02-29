@@ -79,10 +79,21 @@ App.showPage = ->
   $( "#timerInfo" ).text (v, e)->
     updateTimer(e)
 
+  return {
+    example: (x) ->
+      updateTimer(x)
+  }
+
+App.indexPage = ->
+  $(".timerInfo").text (v, e) ->
+    App.showPage().example(e)
+
+
 
 $(document).on "page:change", ->
   App.newPage() if $(".requests.new").length > 0
   App.showPage() if $(".requests.show").length > 0
+  App.indexPage() if $(".requests.index").length > 0
 
 
 
