@@ -1,0 +1,20 @@
+<header style="background-color: white; color: black;text-align: left">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <% @delivers.each do |f| %>
+            <div class="box box-info">
+              <div class="box-header">
+              <span class="text-uppercase large bold" style="font-weight: bold; font-size:140%; font-family: Arial">
+                <%= f.request_id	  %>
+              </span>
+             </div>
+
+
+            </div>
+        <%	 end  %>
+      </div>
+    </div>
+
+  </div>
+</header>

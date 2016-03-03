@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get '/search' => 'search#index'
+  get '/search/:id'  => 'search#show', as: :searchs
+
+  resource :search
+
   get '/profiles' => 'profiles#index'
 
   get 'profiles/new' => 'profiles#new'
@@ -8,8 +14,9 @@ Rails.application.routes.draw do
   #
   # get 'requests/show'
 
+
   get 'signup' => 'users#new'
-  get 'user' => 'users#show'
+  get '/user' => 'users#show'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
@@ -22,6 +29,13 @@ Rails.application.routes.draw do
   get '/requests/:id' => 'requests#show', as: :request
 
   resource :requests
+
+  get '/delivers/new' => 'delivers#new'
+  post '/delivers/new' => 'delivers#create'
+  get '/delivers' => 'delivers#index'
+  get '/delivers/:id' => 'delivers#show', as: :deliver
+
+  resource :delivers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

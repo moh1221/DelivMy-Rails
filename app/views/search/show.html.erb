@@ -1,0 +1,54 @@
+<header style="background-color: white; color: black;text-align: left">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <div class="box">
+          <div class="box-header with-border">
+            <div>
+              <label for="place">Place Name:</label>
+              <h4 id="place"><%= @search.PlaceName	  %></h4>
+            </div>
+          </div>
+          <div class="box-body with-border">
+            <div class="col-md-6">
+              <label for="cost">Cost: </label> <span id="cost" class="label label-primary">$ <%= @search.cost %></span>
+            </div>
+            <div class="col-md-6">
+              <label for="fees">Deliv Pay: </label> <span id="fees" class="label label-success">$ <%= @search.fees %></span>
+            </div>
+            <div class="list-group">
+              <lable>Items:</lable>
+              <ol class="products-list product-list-in-box">
+                <% @items.each do |f| %>
+                    <li class="item">
+                      <div class="product-info">
+                        <a class="product-title"><%= f.ItemsName	  %></a>
+                        <span class="product-description">
+                          <%= f.ItemDescription  %>
+                        </span>
+                      </div>
+                    </li>
+                <%	 end  %>
+              </ol>
+            </div>
+            <div class="section">
+              <label for="address">Address: </label>
+              <div id="address"><%= @location.address	  %></div>
+            </div>
+          </div>
+          <div class="box-header">
+            <div class="section" style="padding: 5px">
+              <span><i class="glyphicon glyphicon-time"></i> <span id="timerInfo"><%= @search.delivery_at %></span></span>
+              <!--<a class="btn btn-sm btn-danger pull-right">Deliv It!</a>-->
+              <!--<%= link_to 'Take It!', new_delivers_url(request_id: @search.id) %>-->
+              <%= button_to "Take It", new_delivers_path(request_id: @search.id), :class => "button", :method => :post  %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
