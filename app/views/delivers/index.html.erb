@@ -2,11 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
+        <h4>You have: <span class="badge" style="background-color:blue"><%= @delivers.length %></span> requests to deliver</h4>
         <% @delivers.each do |f| %>
             <div class="box box-info">
               <div class="box-header">
               <span class="text-uppercase large bold" style="font-weight: bold; font-size:140%; font-family: Arial">
-                <%= f.request_id	  %>
+                <%= f.PlaceName	  %>
               </span>
              </div>
 

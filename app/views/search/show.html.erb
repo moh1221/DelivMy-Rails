@@ -2,7 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-
         <div class="box">
           <div class="box-header with-border">
             <div>
@@ -42,7 +41,7 @@
               <span><i class="glyphicon glyphicon-time"></i> <span id="timerInfo"><%= @search.delivery_at %></span></span>
               <!--<a class="btn btn-sm btn-danger pull-right">Deliv It!</a>-->
               <!--<%= link_to 'Take It!', new_delivers_url(request_id: @search.id) %>-->
-              <%= button_to "Take It", new_delivers_path(request_id: @search.id), :class => "btn btn-sm btn-danger pull-right", :method => :post  %>
+              <%= link_to "Take It", new_delivers_path(request_id: @search.id), :class => "btn btn-sm btn-danger pull-right", :method => :post  %>
             </div>
 
           </div>

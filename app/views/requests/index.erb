@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
+      <h4>Your Total Requests <span class="badge" style="background-color:blue"><%= @requests.length %></span></h4>
       <% @requests.each do |f| %>
           <div class="box box-primary">
             <div class="box-header">

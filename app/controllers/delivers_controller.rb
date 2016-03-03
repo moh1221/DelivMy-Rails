@@ -3,7 +3,7 @@ class DeliversController < ApplicationController
   before_action :require_user, only: [:index, :new, :create]
 
   def index
-    @delivers = Request.select("*").where('requests.user_id = ?', current_user).joins(:deliver).joins(:user).order("requests.id DESC")
+    @delivers = Request.select("*").where('delivers.user_id = ?', current_user).joins(:deliver).order("requests.id DESC")
 
   end
 
