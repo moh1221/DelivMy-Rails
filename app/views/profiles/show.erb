@@ -5,16 +5,16 @@
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <div class="widget-user-header bg-aqua-active">
           <h3 class="widget-user-username"><%= @user.first_name%> <%= @user.last_name %></h3>
-          <h5 class="widget-user-desc"><%= @user.email %></h5>
+          <h6 class="widget-user-desc"><%= @user.email %></h6>
         </div>
         <div class="widget-user-image">
           <% if @profile.picture.nil? %>
-          <%= image_tag 'user.jpg', class: "img-circle" %>
-              <% else %>
-          <img class="img-circle" src="<%= @profile.picture %>" alt="User Avatar" width="128px" height="128px">
-              <% end %>
+              <%= link_to image_tag('user.jpg', class: "img-circle"), new_uploads_path , class: "userImage img-circle" %>
+          <% else %>
+              <a class="userImage" href="/uploads/new"><img class="img-circle" src="<%= @profile.picture %>" alt="User Avatar"></a>
+          <% end %>
         </div>
-        <div class="box-footer">
+          <div class="box-footer">
           <div class="row">
             <div class="col-sm-4 border-right">
               <div class="description-block">
@@ -42,8 +42,11 @@
             <!-- /.col -->
           </div>
           <!-- /.row -->
+          </div>
         </div>
-      </div>
+
+      <h5 style="color: gray">Member since <%= @user.created_at.strftime("%b %Y") %></h5>
+
       <%= form_for(@profile) do |f| %>
           <div class="form-group has-feedback">
             <%= f.text_field :home, :class => 'form-control',:placeholder => "Work Address" %>

@@ -1,6 +1,28 @@
-<h1>Upload a file</h1>
+<header style="background-color: white; color: black;text-align: left">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_tag uploads_new_path, enctype: 'multipart/form-data' do %>
+            <div class="form-group has-feedback">
+              <div class="widget-user-image">
+                <% if @profile.picture.nil? %>
+                    <%= image_tag 'user.jpg', class: "uploadImage" %>
+                <% else %>
+                    <img class="uploadImage" src="<%= @profile.picture %>" alt="User Avatar">
+                <% end %>
+              </div>
+            </div>
+            <h5>Update your Profile Image</h5>
+            <div class="form-group">
+              <%= file_field_tag :file , class: "btn btn-info" %>
+            </div>
+            <div class="form-group">
+              <%= submit_tag 'Upload file', class: "btn btn-danger btn-lg" %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
 
-<%= form_tag uploads_new_path, enctype: 'multipart/form-data' do %>
-    <%= file_field_tag :file  %>
-    <%= submit_tag 'Upload file' %>
-<% end %>
+

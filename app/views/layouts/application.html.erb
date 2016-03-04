@@ -38,8 +38,8 @@
                 <a href="#page-top"></a>
               </li>
 
-              <li class="page-scroll small"><a><%= current_user.email %></a></li>
-              <li class="page-scroll small"><%= link_to "<span><i class='glyphicon glyphicon-cog'></i> Setting</span>".html_safe, profile_path %></li>
+              <li class="page-scroll small"><a style="font-size: 70%"><%= current_user.email %></a></li>
+              <li class="page-scroll small"><%= link_to "<span><i class='fa fa-user'></i> Profile</span>".html_safe, profile_path %></li>
               <li class="page-scroll small"><%= link_to "<span><i class='glyphicon glyphicon-lock'></i> Log out</span>".html_safe, logout_path, method: "delete" %></li>
             </ul>
         <% else %>
