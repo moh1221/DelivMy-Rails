@@ -8,5 +8,7 @@ class SearchController < ApplicationController
     @search = Request.find(params[:id])
     @items = @search.items
     @location = @search.location
+
+
   end
 end

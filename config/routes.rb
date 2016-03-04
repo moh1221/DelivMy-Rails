@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'uploads/new' => 'uploads#new'
+  post 'uploads/new' => 'uploads#create'
+  get 'uploads' => 'uploads#index'
+
+  resource :uploads
+
   get '/search' => 'search#index'
   get '/search/:id'  => 'search#show', as: :searchs
 
   resource :search
 
-  get '/profiles' => 'profiles#index'
+  get '/profiles' => 'profiles#show', as: :profile
 
   get 'profiles/new' => 'profiles#new'
   post 'profiles/new' => 'profiles#create'
