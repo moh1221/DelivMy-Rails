@@ -1,9 +1,14 @@
 class ProfilesController < ApplicationController
+  before_filter :get_user
+
+  def get_user
+    @user = current_user
+  end
+
   def index
   end
 
   def show
-    @user = current_user
     @profile = @user.profile
     @requests = Request.where(user_id: current_user.uuid).count
     @delivers = Deliver.where(user_id: current_user.uuid).count
@@ -13,7 +18,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user = current_user
     @user.profile.update_attributes(profile_params)
     redirect_to user_path
   end

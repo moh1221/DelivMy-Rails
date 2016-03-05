@@ -3,7 +3,10 @@ class RequestsController < ApplicationController
   before_action :require_user, only: [:index, :new, :create]
 
   def index
-    @requests = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, first_name, last_name, email, CatName").where('requests.user_id = ?', current_user).joins(:user).joins(:category).order("requests.id DESC")
+    @requests = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, first_name, last_name, email, CatName").where('requests.user_id = ?', current_user)
+                    .joins(:user)
+                    .joins(:category)
+                    .order("requests.id DESC")
   end
   def new
     @request = Request.new

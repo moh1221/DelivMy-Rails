@@ -5,7 +5,8 @@
     <!-- Your form here -->
     <%= form_for(@user) do |f| %>
 
-
+        <h3>Welcome to DelivMy</h3>
+        <hr>
         <div class="form-group has-feedback">
         <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'First Name' %>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -26,10 +27,10 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
-        <div class="form-group has-feedback">
-          <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Retype password' %>
-          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-        </div>
+        <!--<div class="form-group has-feedback">-->
+          <!--<%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Retype password' %>-->
+          <!--<span class="glyphicon glyphicon-log-in form-control-feedback"></span>-->
+        <!--</div>-->
 
         <div class="form-group has-feedback">
           <%= f.label "Optional Info" %>

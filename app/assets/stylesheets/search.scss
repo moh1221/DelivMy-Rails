@@ -1,3 +1,16 @@
 // Place all the styles related to the Search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.searchImage {
+  position: absolute;
+  top: 35px;
+  left: 16px;
+  max-width: 46px;
+  max-height: 46px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.searchBody {
+  padding-left: 67px;
+}

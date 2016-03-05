@@ -1,7 +1,11 @@
 class SearchController < ApplicationController
   before_action :require_user, only: [:index, :show]
   def index
-    @search = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, first_name, last_name, email, CatName").where('requests.delivery_at > ? and requests.user_id != ? and requests.StatId = 1', DateTime.now, current_user).joins(:user).joins(:category).order("requests.id DESC")
+    @search = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, users.first_name, users.last_name, users.email, CatName, picture")
+                  .where('requests.delivery_at > ? and requests.user_id != ? and requests.StatId = 1', DateTime.now, current_user)
+                  .joins(:user).joins(:profile)
+                  .joins(:category)
+                  .order("requests.id DESC")
   end
 
   def show

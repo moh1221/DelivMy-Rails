@@ -1,4 +1,6 @@
-<%= f.text_field :picture, :class => 'form-control', :placeholder => 'Upload Image' %>
-<%= f.text_field :home, :class => 'form-control', :placeholder => 'Home Address (Optional)' %>
-<%= f.text_field :work, :class => 'form-control', :placeholder => 'Work Address (Optional)' %>
-<hr>
+<div class="form-group has-feedback">
+  <%= f.text_field :home, :class => 'form-control', :placeholder => 'Home Address (Optional)' %>
+</div>
+<div class="form-group has-feedback">
+  <%= f.text_field :work, :class => 'form-control', :placeholder => 'Work Address (Optional)' %>
+</div>

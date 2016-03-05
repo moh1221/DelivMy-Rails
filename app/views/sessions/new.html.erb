@@ -1,7 +1,9 @@
 <header style="background-color: white; color: black;text-align: left">
-<div class="login-box">
+  <br>
+
+  <div class="login-box">
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in</p>
+    <h3 class="login-box-msg">Sign in</h3>
     <%= form_for(:session, url: login_path) do |f| %>
         <div class="form-group has-feedback">
         <%= f.email_field :email, :class => 'form-control',:placeholder => "email" %>
@@ -11,10 +13,12 @@
         <%= f.password_field :password, :class => 'form-control',:placeholder => "password" %>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <%= f.submit "Log in", class: "btn btn-primary btn-block btn-flat" %>
+        <%= f.submit "Log in", class: "btn btn-block btn-flat" %>
     <% end %>
     <br>
-    <%= link_to "Sign up", 'signup' %>
+    <a>Forgot your password?</a>
+    <hr>
+    <span>Need an account? </span><%= link_to "Sign up", 'signup' %>
 
   </div>
 </div>
