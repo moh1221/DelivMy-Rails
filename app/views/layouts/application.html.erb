@@ -27,10 +27,10 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <% if current_user %>
             <ul class="nav navbar-nav">
-              <li class="page-scroll"><%= link_to "search", 	search_path  %></li>
-              <li class="page-scroll"><%= link_to "My Deliv", delivers_path %></li>
-              <li class="page-scroll"><%= link_to "My Requests", requests_path	  %></li>
+              <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-search'></i> Search</span>".html_safe, 	search_path  %></li>
+              <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-arrow-up'></i> My Request</span>".html_safe, requests_path	  %></li>
               <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-plus-sign'></i> Request</span>".html_safe, requests_new_path	  %></li>
+              <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-arrow-down'></i> My Deliv</span>".html_safe, delivers_path %></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -22,14 +22,14 @@
                   <% end %>
 
                   <span class="text" style="font-size: 90%;color:gray"><%= f.first_name	  %>  <%= f.last_name	  %></span>
-               <span class="pull-right">
-                 <span id="fees" class="label label-success">$ <%= f.fees %>
-                 </span>
-               </span>
+                  <span id="fees" class="label label-success pull-right">$ <%= f.fees %></span>
+                  <span class="pull-right" style="color: gray;font-size: 75%; margin-right: 5px"><%= f.items.length %> Items   </span>
+
+
                 </div>
 
                 <div class="section">
-                  <span class="small text text-warning">Placed On <%= f.created_at.strftime("%b, %d %Y") %></span>
+                  <span class="small text text-warning" style="font-size: 70%">Placed On <%= f.created_at.strftime("%b, %d %Y") %></span>
                   <%= link_to "View Order <i class='glyphicon glyphicon-menu-right'></i>".html_safe, searchs_path(f.id), :class => 'btn btn-app pull-right' %>
                 </div>
               </div>
