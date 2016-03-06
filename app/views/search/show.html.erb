@@ -39,10 +39,10 @@
           <div class="box-header">
             <div class="section" style="padding: 5px">
               <span><i class="glyphicon glyphicon-time"></i> <span id="timerInfo"><%= @search.delivery_at %></span></span>
-              <%= link_to "Take It", new_delivers_path(request_id: @search.id), :class => "btn btn-sm btn-danger pull-right", :method => :post  %>
             </div>
-
           </div>
+          <%= link_to "Deliv It", new_delivers_path(request_id: @search.id), :class => "btn btn-block btn-flat", style: "background-color:#cc0038;color:white", :method => :post, data: { confirm: 'Are you sure?' }  %>
+
         </div>
       </div>
     </div>

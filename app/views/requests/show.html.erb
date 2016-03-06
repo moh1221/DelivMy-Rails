@@ -40,6 +40,9 @@
     <div class="box-header">
       <div class="section" style="padding: 5px">
         <span><i class="glyphicon glyphicon-time"></i> <span id="timerInfo"><%= @request.delivery_at %></span></span>
+
+        <%= link_to "<span class='pull-right'><i class='glyphicon glyphicon-remove'></i> Delete</span>".html_safe, @request, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <span id="notice" class="pull-right" style="color: red;font-size: 70%; margin-right: 5px"><%= notice %></span>
       </div>
 
     </div>

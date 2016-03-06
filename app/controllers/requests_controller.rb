@@ -33,6 +33,20 @@ class RequestsController < ApplicationController
     @location = @request.location
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+
+    respond_to do |format|
+      if @request[:StatId] == 1
+        @request.destroy
+        format.html { redirect_to requests_path }
+      else
+        format.html { redirect_to request_path, notice: "Request can't be removerd Status: On Progress" }
+      end
+    end
+
+  end
+
   private
   def request_params
     # locate current user to user_id

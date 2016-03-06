@@ -77,11 +77,11 @@ App.showPage = ->
       return 'Invalid!'
 
   $( "#timerInfo" ).text (v, e)->
-    updateTimer(e)
+    updateTimer(e) if e.indexOf("within") == -1
 
   return {
     example: (x) ->
-      updateTimer(x)
+      updateTimer(x) if x.indexOf("within") == -1
   }
 
 App.indexPage = ->

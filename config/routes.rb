@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   post '/requests' => 'requests#create'
   get '/requests' => 'requests#index'
   get '/requests/:id' => 'requests#show', as: :request
+  delete '/requests/:id' => 'requests#destroy'
+
 
   # resource :requests
 
