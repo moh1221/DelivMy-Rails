@@ -7,6 +7,7 @@
 
         <h3>Welcome to DelivMy</h3>
         <hr>
+        <h5>Create Account</h5>
         <div class="form-group has-feedback">
         <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'First Name' %>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -60,5 +61,8 @@
         <%= f.submit "Create my account", :class => 'btn btn-block btn-flat', style: "background-color:#cc0038;color:white" %>
     <% end %>
   </div>
+  <br>
+  <span>Already have account? </span><%= link_to "Sign in", 'login' %>
+
 </div>
   </header>
