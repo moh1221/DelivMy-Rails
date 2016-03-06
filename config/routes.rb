@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'uploads/new' => 'uploads#new'
+  get 'uploads/new' => 'uploads#new', as: :new_uploads
   post 'uploads/new' => 'uploads#create'
 
   # resource :uploads
@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get 'profiles/new' => 'profiles#new'
   post 'profiles/new' => 'profiles#create'
 
-  get 'signup' => 'users#new'
+  get 'signup' => 'users#new', as: :users
+  post 'signup' => 'users#create'
   get '/user' => 'users#show'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
