@@ -5,8 +5,8 @@ window.App ||= {}
 
 App.showPage = ->
   updateTimer = (input) ->
-    mytime = input
-    mytime = new Date(mytime)
+    a = input.split(/[^0-9]/)
+    mytime = new Date(a[0],a[1]-1,a[2],a[3],a[4],a[5])
     if (mytime != undefined)
       end = new Date(mytime)
       _second = 1000
