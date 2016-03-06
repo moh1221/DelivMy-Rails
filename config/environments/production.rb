@@ -88,7 +88,7 @@ Rails.application.configure do
       :enable_starttls_auto => true
   }
 
-  DelivMyApp::Application.configure do
-    config.force_ssl = true
-  end
+  # DelivMyApp::Application.configure do
+  #   config.force_ssl = true
+  # end
 end
