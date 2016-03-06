@@ -28,10 +28,10 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
-        <!--<div class="form-group has-feedback">-->
-          <!--<%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Retype password' %>-->
-          <!--<span class="glyphicon glyphicon-log-in form-control-feedback"></span>-->
-        <!--</div>-->
+        <div class="form-group has-feedback">
+          <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Retype password' %>
+          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
 
         <div class="form-group has-feedback">
           <%= f.label "Optional Info" %>
@@ -45,7 +45,7 @@
         </div>
 
         <% if @user.errors.any? %>
-            <div id="error_explanation">
+            <div id="error_messages">
               <span style="color: red">
                 <%= pluralize(@user.errors.count, "error") %> prohibited
                 this user from being added:
