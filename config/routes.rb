@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   # resource :requests
 
-  get '/delivers/new' => 'delivers#new'
+  get '/delivers/new' => 'delivers#new', as: :new_delivers
   post '/delivers/new' => 'delivers#create'
   get '/delivers' => 'delivers#index'
   get '/delivers/:id' => 'delivers#show', as: :deliver
