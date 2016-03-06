@@ -1,7 +1,8 @@
 class WelcomeMailer < ApplicationMailer
-  default from: "delivmy@gmail.com"
+  default from: "moh_abo@hotmail.com"
   def sample_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Sample Email')
+    @url = "http://delivmy.com/login"
+    mail(to: @user.email, subject: 'Welcome to DelivMy')
   end
 end

@@ -10,8 +10,8 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
 
     if @user.save
-      WelcomeMailer.sample_email(@user).deliver
-      redirect_to root_path
+      WelcomeMailer.sample_email(@user).deliver_now
+      redirect_to login_path
     else
       puts(@user.errors.any?)
       puts(@user.errors.count)
