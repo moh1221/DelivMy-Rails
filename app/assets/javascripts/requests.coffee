@@ -13,7 +13,7 @@ App.newPage =  ->
     $("#LatInfo").val(Lat)
     $("#LongInfo").val(Long)
     $.ajax
-      url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+Lat+","+Long+"&sensor=true"
+      url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+Lat+","+Long+"&sensor=true"
       type: "POST"
       success: (data, textStatus, jqXHR) ->
         $("#AddInfo").val(data.results[0].formatted_address)
@@ -26,7 +26,7 @@ App.newPage =  ->
     address = $("#AddInfo").val()
     console.log("button clicked!")
     $.ajax
-      url: "http://maps.googleapis.com/maps/api/geocode/json?address="+address+"&sensor=false"
+      url: "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&sensor=false"
       type: "POST"
       success: (data, textStatus, jqXHR) ->
         $("#LatInfo").val(data.results[0].geometry.location.lat)

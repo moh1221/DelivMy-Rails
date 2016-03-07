@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :password_resets
+
   get 'uploads/new' => 'uploads#new', as: :new_uploads
   post 'uploads/new' => 'uploads#create'
 
@@ -21,7 +23,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  # resources :users
+  resources :users
 
   get '/requests/new' => 'requests#new'
   post '/requests' => 'requests#create'
