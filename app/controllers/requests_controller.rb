@@ -12,18 +12,24 @@ class RequestsController < ApplicationController
     @request = Request.new
     2.times {@request.items.build}
     @request.build_location
-
     @category = Category.all
 
   end
 
   def create
     @request = Request.new(request_params)
+    @category = Category.all
     print("I'm at create")
     if @request.save
       redirect_to '/requests'
     else
-      redirect_to request_path
+      puts(@request.errors.any?)
+      puts(@request.errors.count)
+      puts(@request.errors.full_messages)
+      2.times {@request.items.build}
+      @request.build_location
+      @category = Category.all
+      render :action => 'new'
     end
   end
 

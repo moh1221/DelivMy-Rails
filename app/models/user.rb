@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   include UuidHelper
   has_many :requests
   has_many :delivers
-  has_one :profile
+  has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   def send_password_reset

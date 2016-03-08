@@ -6,10 +6,12 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       # session[:user_id] = @user.id
-      if params[:remeber_me]
+      if params[:remember_me]
         cookies.permanent[:auth_token] = @user.auth_token
+        print("Permmmmmmmmmmmmin   - #{params[:remember_me]}")
       else
         cookies[:auth_token] = @user.auth_token
+        print("regggggggggggmmmmmmmmmmmmin   - #{params[:remember_me]}")
       end
 
 

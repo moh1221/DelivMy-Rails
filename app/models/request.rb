@@ -10,4 +10,5 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :location, reject_if: lambda {|attributes| attributes['address'].blank?}
   accepts_nested_attributes_for :location, reject_if: lambda {|attributes| attributes['Lat'].blank?}
 
+  validates :PlaceName, :cost, :fees, presence: true
 end

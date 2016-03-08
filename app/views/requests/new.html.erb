@@ -57,6 +57,20 @@
           <%= f.number_field :fees, :class => 'form-control', :placeholder => '$ Add Tip' %>
         </div>
 
+        <% if @request.errors.any? %>
+        <div id="error_messages">
+              <span style="color: red">
+                <%= pluralize(@request.errors.count, "error") %> prohibited
+                this user from being added:
+              </span>
+          <ul>
+            <% @request.errors.full_messages.each do |msg| %>
+                <li style="color: red"><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
 
         <%= f.submit "Add Request", :class => 'btn btn-success' %>
     <% end %>
