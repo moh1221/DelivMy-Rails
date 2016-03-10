@@ -7,13 +7,18 @@ class SearchController < ApplicationController
                   .joins(:category).includes(:location)
                   .includes(:items)
                   .order("requests.id DESC")
+    if params[:sw]
+      returnVal = [:id, :request_id, :PlaceName, :created_at, :cost, :fees, :delivery_at, :Lat, :Long, :address]
+      @location = Location.select(returnVal).in_bounds([params[:sw], params[:ne]], :origin => params[:center]).joins(:request)
+      render :json => @location.to_json
+    end
+
+
   end
 
   def show
     @search = Request.find(params[:id])
     @items = @search.items
     @location = @search.location
-
-
   end
 end

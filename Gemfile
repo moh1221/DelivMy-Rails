@@ -44,6 +44,9 @@ gem "geocoder"
 # AWS SDK for S3 Bucket
 gem "aws-sdk", '~> 1.5'
 
+# Location search
+gem 'geokit-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

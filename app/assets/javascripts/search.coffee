@@ -4,58 +4,77 @@
 window.App ||= {}
 
 App.showPage = ->
-  updateTimer = (input) ->
-    a = input.split(/[^0-9]/)
-    mytime = new Date(a[0],a[1]-1,a[2],a[3],a[4],a[5])
-    if (mytime != undefined)
-      end = new Date(mytime)
-      _second = 1000
-      _minute = _second * 60
-      _hour = _minute * 60
-      _day = _hour * 24
-      now = new Date()
-      distance = end - now
-      if (distance < 0)
-        return 'EXPIRED!'
-
-      days = Math.floor(distance / _day)
-      hours = Math.floor((distance % _day) / _hour)
-      minutes = Math.floor((distance % _hour) / _minute)
-      if (days > 0)
-        dd = ""
-        if (days == 1)
-          dd = 'within ' + days + ' day'
-        else
-          dd = 'within ' + days + ' days'
-        dd
-      else if (days == 0 && hours > 0)
-        hh = ""
-        if (days == 1)
-          hh = 'within ' + hours + ' hour'
-        else
-          hh = 'within ' + hours + ' hours'
-        hh
-      else if (days == 0 && hours == 0 && minutes > 0)
-        mm = ""
-        if (days == 1)
-          mm = 'within ' + minutes + ' minute'
-        else
-          mm = 'within ' + minutes + ' minutes'
-        mm
-    else
-      return 'Invalid!'
 
   $( "#timerInfo" ).text (v, e)->
-    updateTimer(e) if e.indexOf("within") == -1
+    upTimer = new timer(x)
+    upTimer.updTimer(e) if e.indexOf("within") == -1
 
   return {
     example: (x) ->
-      updateTimer(x) if x.indexOf("within") == -1
+      upTimer = new timer(x)
+      upTimer.updTimer(x) if x.indexOf("within") == -1
   }
 
 App.indexPage = ->
   $(".timerInfo").text (v, e) ->
     App.showPage().example(e)
+
+  map
+  markers = new Array();
+  updateMap = () ->
+    bounds = map.getBounds()
+    southWest = bounds.getSouthWest()
+    northEast = bounds.getNorthEast()
+    $.ajax 'search' ,
+      type: "GET",
+      dataType: "JSON",
+      data:
+        sw: southWest.toUrlValue()
+        ne: northEast.toUrlValue()
+        center: [map.getCenter().lat(), map.getCenter().lng()]
+      asnyc: false,
+      success: (data, x, v) ->
+        console.log(data)
+        removeMarkersOutsideOfMapBounds() if markers.length > 0
+        json = data
+        json.map (i) ->
+          id = i.id
+          if(!markers[id] || markers[id] == null)
+            markers[id] = createMarker(i)
+            map.addOverlay(markers[id])
+
+  createMarkerClickHandler = (marker, location) ->
+    return () ->
+      marker.openInfoWindowHtml(
+        '<div><strong>' + location.PlaceName + '</strong><br/> ' +
+          location.address + '<br/>'+
+          'Cost: $' + location.cost + ' - Fees: $' + location.fees + '</div>')
+
+    return false
+
+  createMarker = (location) ->
+    latlng = new GLatLng location.Lat, location.Long
+    marker = new GMarker latlng
+    handler = createMarkerClickHandler(marker, location)
+    google.maps.event.addListener marker, "click", handler
+    return marker
+
+  removeMarkersOutsideOfMapBounds = () ->
+  for i in markers
+    if i > 0 && markers[i] && !map.getBounds().containsLatLng(markers[i].getLatLng())
+      map.removeOverlay(markers[i])
+      markers[i] = null
+
+
+
+
+  map = new GMap2 document.getElementById("map")
+  map.setCenter new GLatLng(37.731145,-97.326092),4
+
+  google.maps.event.addListener map, "moveend", () -> updateMap()
+
+
+
 
 
 
