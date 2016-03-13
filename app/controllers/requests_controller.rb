@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
 
   def index
     @requests = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, first_name, last_name, email, CatName").where('requests.user_id = ?', current_user)
-                    .joins(:user)
+                    .joins(:profile)
                     .joins(:category)
                     .order("requests.id DESC")
   end

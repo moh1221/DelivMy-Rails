@@ -43,6 +43,7 @@ App.indexPage = ->
             markers[id] = createMarker(i)
             map.addOverlay(markers[id])
 
+
   createMarkerClickHandler = (marker, location) ->
     return () ->
       marker.openInfoWindowHtml(
@@ -53,17 +54,23 @@ App.indexPage = ->
     return false
 
   createMarker = (location) ->
+    centreicon = new GIcon
+    centreicon.image = "/assets/mapIcons/number_#{location.fees}.png";
+#    centreicon.iconSize = new GSize 25, 30
+    centreicon.shadowSize = new GSize 22, 20
+    centreicon.iconAnchor = new GPoint 6, 20
+    centreicon.infoWindowAnchor = new GPoint 5, 1
     latlng = new GLatLng location.Lat, location.Long
-    marker = new GMarker latlng
+    marker = new GMarker latlng, centreicon
     handler = createMarkerClickHandler(marker, location)
     google.maps.event.addListener marker, "click", handler
     return marker
 
   removeMarkersOutsideOfMapBounds = () ->
-  for i in markers
-    if i > 0 && markers[i] && !map.getBounds().containsLatLng(markers[i].getLatLng())
-      map.removeOverlay(markers[i])
-      markers[i] = null
+    markers.map (marker, i) ->
+      if !map.getBounds().containsLatLng(markers[i].getLatLng())
+        map.removeOverlay(markers[i])
+        delete markers[i]
 
 
 

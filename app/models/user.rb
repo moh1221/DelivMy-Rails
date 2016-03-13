@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   before_create { generate_token(:auth_token)}
 
-  validates :first_name, :last_name, :length => { :minimum => 2, maximum: 30 }, presence: true
+
   validates :email, uniqueness: true, presence: true
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
   # validates :password, :length => {minimum: 8}

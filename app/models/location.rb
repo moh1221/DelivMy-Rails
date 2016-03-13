@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to :request
+
   acts_as_mappable :default_units => :miles,
                    :default_formula => :sphere,
                    :distance_field_name => :distance,

@@ -5,6 +5,7 @@ class Request < ActiveRecord::Base
   has_one :deliver, dependent: :destroy
   belongs_to :category
   has_one :profile, :through => :user
+  acts_as_mappable :through => :location
 
   accepts_nested_attributes_for :items, reject_if: lambda {|attributes| attributes['ItemsName'].blank?}
   accepts_nested_attributes_for :location, reject_if: lambda {|attributes| attributes['address'].blank?}
