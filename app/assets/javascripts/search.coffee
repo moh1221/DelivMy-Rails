@@ -12,7 +12,7 @@ App.showPage = ->
   return {
     example: (x) ->
       upTimer = new timer(x)
-      upTimer.updTimer(x) if x.indexOf("within") == -1
+      upTimer.updTimer() if x.indexOf("within") == -1
   }
 
 App.indexPage = ->
@@ -52,6 +52,10 @@ App.indexPage = ->
         center: [map.getCenter().lat(), map.getCenter().lng()]
       success: (data, x, v) ->
         $("#list").html(data)
+        $(".timerInfo").text (v, e) ->
+          App.showPage().example(e)
+
+
 
 
 
