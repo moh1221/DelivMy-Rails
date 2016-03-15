@@ -28,6 +28,7 @@ App.indexPage = ->
     $.ajax 'search' ,
       type: "GET",
       dataType: "JSON",
+      contentType: "application/json; charset=utf-8",
       data:
         sw: southWest.toUrlValue()
         ne: northEast.toUrlValue()
@@ -45,7 +46,8 @@ App.indexPage = ->
 
     $.ajax 'search' ,
       type: "GET",
-      dataType: "html",
+      dataType: "HTML",
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       data:
         sw: southWest.toUrlValue()
         ne: northEast.toUrlValue()
