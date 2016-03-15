@@ -11,12 +11,8 @@ class UsersController < ApplicationController
 
     if @user.save
       WelcomeMailer.sample_email(@user).deliver_now
-      redirect_to login_path
+      redirect_to login_path, notice: "You have been successfully registered"
     else
-      puts(@user.errors.any?)
-      puts(@user.errors.count)
-      puts(@user.errors.full_messages)
-      # redirect_to signup_path
       render 'new'
     end
   end

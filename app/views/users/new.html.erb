@@ -8,15 +8,6 @@
         <h3>Welcome to DelivMy</h3>
         <hr>
         <h5>Create Account</h5>
-        <div class="form-group has-feedback">
-        <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'First Name' %>
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-
-        <div class="form-group has-feedback">
-        <%= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last Name' %>
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
 
         <div class="form-group has-feedback">
         <%= f.email_field :email, :class => 'form-control', :placeholder => 'Email' %>
@@ -34,14 +25,14 @@
         </div>
 
         <div class="form-group has-feedback">
-          <%= f.label "Optional Info" %>
-          <ul class="list-group">
+
+          <div class="list-group">
             <%= f.fields_for :profile do |profile_form| %>
-                <li>
+
                   <%= render "profile_fields", :f => profile_form  %>
-                </li>
+
             <% end %>
-          </ul>
+          </div>
         </div>
 
         <% if @user.errors.any? %>

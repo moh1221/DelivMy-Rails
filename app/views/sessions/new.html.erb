@@ -3,6 +3,9 @@
 
   <div class="login-box">
   <div class="login-box-body">
+    <% if !notice.nil? %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
     <h3 class="login-box-msg">Sign in</h3>
     <%= form_for(:session, url: login_path) do |f| %>
         <div class="form-group has-feedback">
