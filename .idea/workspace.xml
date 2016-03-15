@@ -2,125 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8944a7ca-1679-43fa-8a00-71a0da598e66" name="Default" comment="first task">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_0.png" afterPath="$PROJECT_DIR$/app/assets/images/number_0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_1.png" afterPath="$PROJECT_DIR$/app/assets/images/number_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_10.png" afterPath="$PROJECT_DIR$/app/assets/images/number_10.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_100.png" afterPath="$PROJECT_DIR$/app/assets/images/number_100.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_11.png" afterPath="$PROJECT_DIR$/app/assets/images/number_11.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_12.png" afterPath="$PROJECT_DIR$/app/assets/images/number_12.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_13.png" afterPath="$PROJECT_DIR$/app/assets/images/number_13.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_14.png" afterPath="$PROJECT_DIR$/app/assets/images/number_14.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_15.png" afterPath="$PROJECT_DIR$/app/assets/images/number_15.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_16.png" afterPath="$PROJECT_DIR$/app/assets/images/number_16.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_17.png" afterPath="$PROJECT_DIR$/app/assets/images/number_17.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_18.png" afterPath="$PROJECT_DIR$/app/assets/images/number_18.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_19.png" afterPath="$PROJECT_DIR$/app/assets/images/number_19.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_2.png" afterPath="$PROJECT_DIR$/app/assets/images/number_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_20.png" afterPath="$PROJECT_DIR$/app/assets/images/number_20.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_21.png" afterPath="$PROJECT_DIR$/app/assets/images/number_21.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_22.png" afterPath="$PROJECT_DIR$/app/assets/images/number_22.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_23.png" afterPath="$PROJECT_DIR$/app/assets/images/number_23.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_24.png" afterPath="$PROJECT_DIR$/app/assets/images/number_24.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_25.png" afterPath="$PROJECT_DIR$/app/assets/images/number_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_26.png" afterPath="$PROJECT_DIR$/app/assets/images/number_26.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_27.png" afterPath="$PROJECT_DIR$/app/assets/images/number_27.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_28.png" afterPath="$PROJECT_DIR$/app/assets/images/number_28.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_29.png" afterPath="$PROJECT_DIR$/app/assets/images/number_29.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_3.png" afterPath="$PROJECT_DIR$/app/assets/images/number_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_30.png" afterPath="$PROJECT_DIR$/app/assets/images/number_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_31.png" afterPath="$PROJECT_DIR$/app/assets/images/number_31.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_32.png" afterPath="$PROJECT_DIR$/app/assets/images/number_32.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_33.png" afterPath="$PROJECT_DIR$/app/assets/images/number_33.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_34.png" afterPath="$PROJECT_DIR$/app/assets/images/number_34.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_35.png" afterPath="$PROJECT_DIR$/app/assets/images/number_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_36.png" afterPath="$PROJECT_DIR$/app/assets/images/number_36.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_37.png" afterPath="$PROJECT_DIR$/app/assets/images/number_37.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_38.png" afterPath="$PROJECT_DIR$/app/assets/images/number_38.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_39.png" afterPath="$PROJECT_DIR$/app/assets/images/number_39.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_4.png" afterPath="$PROJECT_DIR$/app/assets/images/number_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_40.png" afterPath="$PROJECT_DIR$/app/assets/images/number_40.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_41.png" afterPath="$PROJECT_DIR$/app/assets/images/number_41.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_42.png" afterPath="$PROJECT_DIR$/app/assets/images/number_42.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_43.png" afterPath="$PROJECT_DIR$/app/assets/images/number_43.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_44.png" afterPath="$PROJECT_DIR$/app/assets/images/number_44.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_45.png" afterPath="$PROJECT_DIR$/app/assets/images/number_45.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_46.png" afterPath="$PROJECT_DIR$/app/assets/images/number_46.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_47.png" afterPath="$PROJECT_DIR$/app/assets/images/number_47.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_48.png" afterPath="$PROJECT_DIR$/app/assets/images/number_48.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_49.png" afterPath="$PROJECT_DIR$/app/assets/images/number_49.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_5.png" afterPath="$PROJECT_DIR$/app/assets/images/number_5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_50.png" afterPath="$PROJECT_DIR$/app/assets/images/number_50.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_51.png" afterPath="$PROJECT_DIR$/app/assets/images/number_51.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_52.png" afterPath="$PROJECT_DIR$/app/assets/images/number_52.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_53.png" afterPath="$PROJECT_DIR$/app/assets/images/number_53.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_54.png" afterPath="$PROJECT_DIR$/app/assets/images/number_54.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_55.png" afterPath="$PROJECT_DIR$/app/assets/images/number_55.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_56.png" afterPath="$PROJECT_DIR$/app/assets/images/number_56.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_57.png" afterPath="$PROJECT_DIR$/app/assets/images/number_57.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_58.png" afterPath="$PROJECT_DIR$/app/assets/images/number_58.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_59.png" afterPath="$PROJECT_DIR$/app/assets/images/number_59.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_6.png" afterPath="$PROJECT_DIR$/app/assets/images/number_6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_60.png" afterPath="$PROJECT_DIR$/app/assets/images/number_60.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_61.png" afterPath="$PROJECT_DIR$/app/assets/images/number_61.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_62.png" afterPath="$PROJECT_DIR$/app/assets/images/number_62.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_63.png" afterPath="$PROJECT_DIR$/app/assets/images/number_63.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_64.png" afterPath="$PROJECT_DIR$/app/assets/images/number_64.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_65.png" afterPath="$PROJECT_DIR$/app/assets/images/number_65.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_66.png" afterPath="$PROJECT_DIR$/app/assets/images/number_66.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_67.png" afterPath="$PROJECT_DIR$/app/assets/images/number_67.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_68.png" afterPath="$PROJECT_DIR$/app/assets/images/number_68.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_69.png" afterPath="$PROJECT_DIR$/app/assets/images/number_69.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_7.png" afterPath="$PROJECT_DIR$/app/assets/images/number_7.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_70.png" afterPath="$PROJECT_DIR$/app/assets/images/number_70.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_71.png" afterPath="$PROJECT_DIR$/app/assets/images/number_71.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_72.png" afterPath="$PROJECT_DIR$/app/assets/images/number_72.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_73.png" afterPath="$PROJECT_DIR$/app/assets/images/number_73.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_74.png" afterPath="$PROJECT_DIR$/app/assets/images/number_74.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_75.png" afterPath="$PROJECT_DIR$/app/assets/images/number_75.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_76.png" afterPath="$PROJECT_DIR$/app/assets/images/number_76.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_77.png" afterPath="$PROJECT_DIR$/app/assets/images/number_77.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_78.png" afterPath="$PROJECT_DIR$/app/assets/images/number_78.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_79.png" afterPath="$PROJECT_DIR$/app/assets/images/number_79.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_8.png" afterPath="$PROJECT_DIR$/app/assets/images/number_8.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_80.png" afterPath="$PROJECT_DIR$/app/assets/images/number_80.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_81.png" afterPath="$PROJECT_DIR$/app/assets/images/number_81.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_82.png" afterPath="$PROJECT_DIR$/app/assets/images/number_82.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_83.png" afterPath="$PROJECT_DIR$/app/assets/images/number_83.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_84.png" afterPath="$PROJECT_DIR$/app/assets/images/number_84.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_85.png" afterPath="$PROJECT_DIR$/app/assets/images/number_85.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_86.png" afterPath="$PROJECT_DIR$/app/assets/images/number_86.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_87.png" afterPath="$PROJECT_DIR$/app/assets/images/number_87.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_88.png" afterPath="$PROJECT_DIR$/app/assets/images/number_88.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_89.png" afterPath="$PROJECT_DIR$/app/assets/images/number_89.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_9.png" afterPath="$PROJECT_DIR$/app/assets/images/number_9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_90.png" afterPath="$PROJECT_DIR$/app/assets/images/number_90.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_91.png" afterPath="$PROJECT_DIR$/app/assets/images/number_91.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_92.png" afterPath="$PROJECT_DIR$/app/assets/images/number_92.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_93.png" afterPath="$PROJECT_DIR$/app/assets/images/number_93.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_94.png" afterPath="$PROJECT_DIR$/app/assets/images/number_94.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_95.png" afterPath="$PROJECT_DIR$/app/assets/images/number_95.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_96.png" afterPath="$PROJECT_DIR$/app/assets/images/number_96.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_97.png" afterPath="$PROJECT_DIR$/app/assets/images/number_97.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_98.png" afterPath="$PROJECT_DIR$/app/assets/images/number_98.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/mapIcons/number_99.png" afterPath="$PROJECT_DIR$/app/assets/images/number_99.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/delivers.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/delivers.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/requests.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/requests.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/search.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/search.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/delivers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/delivers_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/requests_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/requests_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/search_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/search_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/deliver.rb" afterPath="$PROJECT_DIR$/app/models/deliver.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/request.rb" afterPath="$PROJECT_DIR$/app/models/request.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/delivers/index.html.erb" afterPath="$PROJECT_DIR$/app/views/delivers/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/delivers/show.html.erb" afterPath="$PROJECT_DIR$/app/views/delivers/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/requests/index.erb" afterPath="$PROJECT_DIR$/app/views/requests/index.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/requests/show.html.erb" afterPath="$PROJECT_DIR$/app/views/requests/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/search/_list_field.erb" afterPath="$PROJECT_DIR$/app/views/search/_list_field.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/search/index.html.erb" afterPath="$PROJECT_DIR$/app/views/search/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/uploads/new.html.erb" afterPath="$PROJECT_DIR$/app/views/uploads/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/aws.rb" afterPath="$PROJECT_DIR$/config/initializers/aws.rb" />
     </list>
     <ignored path="DelivMyApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -199,10 +81,10 @@
       <file leaf-file-name="search.coffee" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/search.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7271468">
-              <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.43905818">
+              <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
               <folding>
-                <marker date="1458026541000" expanded="true" signature="1656:1823" placeholder="..." />
+                <marker date="1458026983000" expanded="true" signature="1656:1823" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -2081,10 +1963,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/search.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7271468">
-          <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.43905818">
+          <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
           <folding>
-            <marker date="1458026541000" expanded="true" signature="1656:1823" placeholder="..." />
+            <marker date="1458026983000" expanded="true" signature="1656:1823" placeholder="..." />
           </folding>
         </state>
       </provider>

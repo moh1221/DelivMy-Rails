@@ -66,7 +66,7 @@ App.indexPage = ->
 
   createMarker = (location) ->
     centreicon = new GIcon
-    centreicon.image = "/assets/number_#{location.fees}.png";
+    centreicon.image = "../assets/number_#{location.fees}.png";
 #    centreicon.iconSize = new GSize 25, 30
     centreicon.shadowSize = new GSize 22, 20
     centreicon.iconAnchor = new GPoint 6, 20
