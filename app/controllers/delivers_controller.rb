@@ -3,8 +3,7 @@ class DeliversController < ApplicationController
   before_action :require_user, only: [:index, :new, :create]
 
   def index
-    @delivers = Request.select("*").where('delivers.user_id = ?', current_user).joins(:deliver).order("requests.id DESC")
-
+    @delivers = Request.request_deliver_select.current_delivery(current_user).recent_deliver
   end
 
   def new
@@ -15,7 +14,7 @@ class DeliversController < ApplicationController
     @deliver = Deliver.new(deliver_params)
 
     if @deliver.save
-      if @deliver.request.update(StatId: 2)
+      if @deliver.request.update(status_id: 2)
         redirect_to '/delivers'
       else
         redirect_to deliver_path
@@ -25,31 +24,13 @@ class DeliversController < ApplicationController
     end
   end
 
-
-
   def show
-    @deliver = Deliver.find(params[:id])
-    @items = @deliver.items
-    @location = @deliver.location
+    @request = Request.includes(:items, :location, :profile, :deliver).find(params[:id])
   end
 
   private
   def deliver_params
-    # locate current user to user_id
-    print(current_user.uuid)
-    params[:deliv_Status] = 1
     params[:user_id] = current_user.uuid
-    # firstime request StatId = 1 "Open"
-
-    params[:receipt_img] = ""
-    params[:completed_at] = ""
-
     params.permit(:request_id, :user_id, :deliv_Status, :receipt_img, :completed_at)
   end
-
-  # private
-  # def deliver_params
-  #   params.require(:deliver).permit(:request_id)
-  # end
-
 end

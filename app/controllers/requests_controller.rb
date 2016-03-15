@@ -3,10 +3,10 @@ class RequestsController < ApplicationController
   before_action :require_user, only: [:index, :new, :create]
 
   def index
-    @requests = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, first_name, last_name, email, CatName").where('requests.user_id = ?', current_user)
-                    .joins(:profile)
+    @requests = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, first_name, last_name, email, CatName, status_info").where('requests.user_id = ?', current_user)
+                    .joins(:profile).joins(:status)
                     .joins(:category)
-                    .order("requests.id DESC")
+                    .order("status_info, delivery_at DESC")
   end
   def new
     @request = Request.new
@@ -35,6 +35,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    @deliver = @request.deliver
     @items = @request.items
     @location = @request.location
   end
@@ -43,7 +44,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
 
     respond_to do |format|
-      if @request[:StatId] == 1
+      if @request[:status_id] == 1
         @request.destroy
         format.html { redirect_to requests_path }
       else
@@ -58,8 +59,8 @@ class RequestsController < ApplicationController
     # locate current user to user_id
     params[:request][:user_id] = current_user.uuid
     # firstime request StatId = 1 "Open"
-    params[:request][:StatId] = 1
-    params.require(:request).permit(:user_id, :PlaceName, :StatId, :category_id, :cost, :fees, :delivery_at, items_attributes: [ :ItemsName, :ItemDescription ], location_attributes: [:address, :Lat, :Long])
+    params[:request][:status_id] = 1
+    params.require(:request).permit(:user_id, :PlaceName, :status_id, :category_id, :cost, :fees, :delivery_at, items_attributes: [ :ItemsName, :ItemDescription ], location_attributes: [:address, :Lat, :Long])
   end
 
 end

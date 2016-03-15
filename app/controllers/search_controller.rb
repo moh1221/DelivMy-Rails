@@ -6,19 +6,18 @@ class SearchController < ApplicationController
       returnVal = [:id, :request_id, :PlaceName, :created_at, :cost, :fees, :delivery_at, :Lat, :Long, :address]
       # @search = Location.select("*").in_bounds([params[:sw], params[:ne]], :origin => params[:center]).joins(:request)
       @search = Request.select(valData)
-                    .where('requests.delivery_at > ? and requests.user_id != ?', DateTime.now, current_user)
+                    .where('requests.delivery_at > ? and requests.user_id != ? and requests.status_id = 1', DateTime.now, current_user)
                     .joins(:profile)
                     .joins(:category).joins(:location).in_bounds([params[:sw], params[:ne]], :origin => params[:center])
                     .includes(:items)
                     .order("requests.id DESC")
       respond_to do |format|
-        # format.html { render partial: 'list_field'}# index.html.erb
+        format.html { render partial: 'list_field'}# index.html.erb
         format.json { render json: @search }
-        format.js
       end
     else
       @search = Request.select(valData)
-                    .where('requests.delivery_at > ? and requests.user_id != ? and requests.StatId = 1', DateTime.now, current_user)
+                    .where('requests.delivery_at > ? and requests.user_id != ? and requests.status_id = 1', DateTime.now, current_user)
                     .joins(:profile)
                     .joins(:category).joins(:location)
                     .includes(:items)

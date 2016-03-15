@@ -6,8 +6,8 @@ window.App ||= {}
 App.showPage = ->
 
   $( "#timerInfo" ).text (v, e)->
-    upTimer = new timer(x)
-    upTimer.updTimer(e) if e.indexOf("within") == -1
+    upTime = new timer(e)
+    upTime.updTimer() if e.indexOf("within") == -1
 
   return {
     example: (x) ->
@@ -43,6 +43,17 @@ App.indexPage = ->
             markers[id] = createMarker(i)
             map.addOverlay(markers[id])
 
+    $.ajax 'search' ,
+      type: "GET",
+      dataType: "html",
+      data:
+        sw: southWest.toUrlValue()
+        ne: northEast.toUrlValue()
+        center: [map.getCenter().lat(), map.getCenter().lng()]
+      success: (data, x, v) ->
+        $("#list").html(data)
+
+
 
   createMarkerClickHandler = (marker, location) ->
     return () ->
@@ -55,7 +66,7 @@ App.indexPage = ->
 
   createMarker = (location) ->
     centreicon = new GIcon
-    centreicon.image = "/assets/mapIcons/number_#{location.fees}.png";
+    centreicon.image = "/assets/number_#{location.fees}.png";
 #    centreicon.iconSize = new GSize 25, 30
     centreicon.shadowSize = new GSize 22, 20
     centreicon.iconAnchor = new GPoint 6, 20
@@ -74,9 +85,20 @@ App.indexPage = ->
 
 
 
+  applyLocation = (location) ->
+    coords = location.coords
+    lat = coords.latitude
+    lng = coords.longitude
+    map.setCenter new GLatLng(lat,lng),12
+
+
 
   map = new GMap2 document.getElementById("map")
   map.setCenter new GLatLng(37.731145,-97.326092),4
+
+  navigator.geolocation.getCurrentPosition applyLocation
+
+
 
   google.maps.event.addListener map, "moveend", () -> updateMap()
 

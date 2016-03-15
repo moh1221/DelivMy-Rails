@@ -7,8 +7,10 @@
       <div class="box-header with-border">
         <div>
           <label for="place">Place Name:</label>
-          <h4 id="place"><%= @request.PlaceName	  %></h4>
+          <span id="place"><%= @request.PlaceName	  %></span>
+          <span class="pull-right">Status: <%= @deliver.status.status_info %></span>
         </div>
+
       </div>
       <div class="box-body with-border">
           <div class="col-md-6">

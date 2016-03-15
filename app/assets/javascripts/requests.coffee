@@ -4,24 +4,6 @@
 window.App ||= {}
 
 App.newPage =  ->
-#  Lat = 38
-#  Long = -78.5
-#  applyLocation = (location) ->
-#    coords = location.coords
-#    Lat = coords.latitude
-#    Long = coords.longitude
-#    $("#LatInfo").val(Lat)
-#    $("#LongInfo").val(Long)
-#    $.ajax
-#      url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+Lat+","+Long+"&sensor=true"
-#      type: "POST"
-#      success: (data, textStatus, jqXHR) ->
-#        $("#AddInfo").val(data.results[0].formatted_address)
-#      error: (jqXHR, textStatus, errorThrown) ->
-#        console.log(errorThrown)
-#
-#  navigator.geolocation.getCurrentPosition applyLocation
-#  false
   locFinder = new locationLoad();
   locFinder.getAddress();
 

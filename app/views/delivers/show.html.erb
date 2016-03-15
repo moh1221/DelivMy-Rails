@@ -1,2 +1,68 @@
-<h1>Delivers#show</h1>
-<p>Find me in app/views/delivers/show.html.erb</p>
+<header style="background-color: white; color: black;text-align: left">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <div>
+              <label for="place">Place Name:</label>
+              <h4 id="place"><%= @request.PlaceName	  %></h4>
+            </div>
+          </div>
+          <div class="box-body with-border">
+            <div class="col-md-6">
+              <label for="cost">Cost: </label> <span id="cost" class="label label-primary">$ <%= @request.cost %></span>
+            </div>
+            <div class="col-md-6">
+              <label for="fees">Deliv Pay: </label> <span id="fees" class="label label-success">$ <%= @request.fees %></span>
+            </div>
+            <div class="list-group">
+              <lable>Items:</lable>
+              <ol class="products-list product-list-in-box">
+                <% @request.items.each do |f| %>
+                    <li class="item">
+                      <div class="product-info">
+                        <a class="product-title"><%= f.ItemsName	  %></a>
+                        <span class="product-description">
+                          <%= f.ItemDescription  %>
+                        </span>
+                      </div>
+                    </li>
+                <%	 end  %>
+              </ol>
+            </div>
+            <div class="section">
+              <label for="address">Address: </label>
+              <div id="address"><%= @request.location.address	  %></div>
+            </div>
+            <hr>
+            <div class="section" onclick="alert('hello')">
+              <h5>
+                <% if @request.deliver.receipt_img.nil? %>
+                <i class="glyphicon glyphicon-remove-circle" style="opacity: 0.8;color: red"></i>
+                <% else %>
+                    <i class="glyphicon glyphicon-ok-circle" style="opacity: 0.8;color: green"></i>
+              <% end %>
+                    Upload Receipt
+              <i class="glyphicon glyphicon-menu-right pull-right"></i>
+              </h5>
+            </div>
+            <hr>
+            <div class="section" >
+              <label for="receipt">Deliv Completed: </label>
+              <a id="receipt" class="btn btn-block" style="background-color:#cc0038;color:white">Submit</a>
+            </div>
+          </div>
+          <div class="box-header">
+            <div class="section" style="padding: 5px">
+              <span><i class="glyphicon glyphicon-time"></i> <span id="timerInfo"><%= @request.delivery_at %></span></span>
+
+              <%= link_to "<span class='pull-right'> Report issue?</span>".html_safe, @request, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <span id="notice" class="pull-right" style="color: red;font-size: 70%; margin-right: 5px"><%= notice %></span>
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>

@@ -1,38 +1,35 @@
 <header style="background-color: white; color: black;text-align: left">
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h4>Your Total Requests <span class="badge" style="background-color:blue"><%= @requests.length %></span></h4>
-      <% @requests.each do |f| %>
-          <div class="box box-primary">
-            <div class="box-header">
-              <span class="text-uppercase large bold" style="font-weight: bold; font-size:140%; font-family: Arial">
-                <%= f.PlaceName	  %>
-              <span style="color: lightgray; font-size: 50%"><%= f.CatName %></span>
-              </span>
-              <span class="pull-right" style="color:lightslategray"><i class="glyphicon glyphicon-time"></i> <span class="timerInfo"><%= f.delivery_at %></span></span>
-            </div>
-
-            <div class="box-body">
-              <div class="section">
-
-
-                <span class="text" style="font-size: 120%"><%= f.first_name	  %>  <%= f.last_name	  %></span>
-               <span class="pull-right">
-                 <span id="fees" class="label label-success">$ <%= f.fees %>
-                 </span>
-               </span>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>Your Total Requests <span class="badge" style="background-color:blue"><%= @requests.length %></span></h4>
+        <% @requests.each do |f| %>
+            <div class="box box-primary">
+              <div class="box-header">
+                <span class="text-uppercase large bold" style="font-weight: bold; font-size:140%; font-family: Arial">
+                  <%= f.PlaceName	  %>
+                  <span style="color: lightgray; font-size: 50%"><%= f.CatName %></span>
+                </span>
+                <span class="pull-right" style="color:lightslategray"><i class="glyphicon glyphicon-time"></i> <span class="timerInfo"><%= f.delivery_at %></span></span>
               </div>
-
-            <div class="section">
-              <span class="small text text-warning">Placed On <%= f.created_at.strftime("%b, %d %Y") %></span>
-              <%= link_to "View Order <i class='glyphicon glyphicon-menu-right'></i>".html_safe, request_path(f.id), :class => 'btn btn-app pull-right' %>
+              <div class="box-body">
+                <div class="section">
+                  <span class="text" style="font-size: 120%"><%= f.first_name	  %>  <%= f.last_name	  %></span>
+                  <span id="fees" class="label label-success pull-right"  style="padding: 3px">$ <%= f.fees %></span>
+                  <% if f.status_info == 'On Progress' %>
+                      <span class="pull-right" style="font-size: 70%;color: gray;padding: 3px"><i class="fa fa-refresh fa-spin" style="color:orange"></i>  <%= f.status_info %>  </span>
+                <% else %>
+                      <span class="pull-right" style="font-size: 70%;color: gray;padding: 3px">  <%= f.status_info %>  </span>
+                <% end %>
+                   </div>
+                <div class="section">
+                  <span class="small text text-warning">Placed On <%= f.created_at.strftime("%b, %d %Y") %></span>
+                  <%= link_to "View Order <i class='glyphicon glyphicon-menu-right'></i>".html_safe, request_path(f.id), :class => 'btn btn-app pull-right' %>
+                </div>
+              </div>
             </div>
-            </div>
-          </div>
-      <%	 end  %>
+        <% end  %>
+      </div>
     </div>
   </div>
-
-</div>
 </header>

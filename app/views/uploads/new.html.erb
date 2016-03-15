@@ -5,10 +5,10 @@
         <%= form_tag uploads_new_path, enctype: 'multipart/form-data' do %>
             <div class="form-group has-feedback">
               <div class="widget-user-image">
-                <% if @profile.picture.nil? %>
+                <% if @user.profile.picture.nil? %>
                     <%= image_tag 'user.jpg', class: "uploadImage" %>
                 <% else %>
-                    <img class="uploadImage" src="<%= @profile.picture %>" alt="User Avatar">
+                    <img class="uploadImage" src="<%= @user.profile.picture %>" alt="User Avatar">
                 <% end %>
               </div>
             </div>

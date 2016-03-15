@@ -4,3 +4,4 @@ AWS.config(
 )
 
 S3_BUCKET =  AWS::S3.new.buckets[ENV['S3_BUCKET']]
+S3_RECEIPT =  AWS::S3.new.buckets[ENV['S3_RECEIPT']]
