@@ -1,28 +1,15 @@
 class SearchController < ApplicationController
   before_action :require_user, only: [:index, :show]
   def index
-    valData = [:id, :PlaceName, :created_at, :cost, :fees, :delivery_at, :first_name, :last_name, :email, :CatName, :picture, :Lat, :Long, :address]
-    if params[:sw].present?
-      returnVal = [:id, :request_id, :PlaceName, :created_at, :cost, :fees, :delivery_at, :Lat, :Long, :address]
-      # @search = Location.select("*").in_bounds([params[:sw], params[:ne]], :origin => params[:center]).joins(:request)
-      @search = Request.select(valData)
-                    .where('requests.delivery_at > ? and requests.user_id != ? and requests.status_id = 1', DateTime.now, current_user)
-                    .joins(:profile)
-                    .joins(:category).joins(:location).in_bounds([params[:sw], params[:ne]], :origin => params[:center])
-                    .includes(:items)
-                    .order("requests.id DESC")
+    search = Request.selected_val.search_filter(current_user).search_joins.search_order
+    @search = search.limit(20)
+
+    if params[:sw]
+      @search = search.in_bounds([params[:sw], params[:ne]], :origin => params[:center])
       respond_to do |format|
         format.html { render partial: 'list_field'}# index.html.erb
         format.json { render json: @search }
       end
-    else
-      @search = Request.select(valData)
-                    .where('requests.delivery_at > ? and requests.user_id != ? and requests.status_id = 1', DateTime.now, current_user)
-                    .joins(:profile)
-                    .joins(:category).joins(:location)
-                    .includes(:items)
-                    .order("requests.id DESC")
-
     end
   end
 

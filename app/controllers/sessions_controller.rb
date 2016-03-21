@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  after_filter :set_csrf_header, only: [:new, :create]
+
   def new
   end
 
@@ -6,32 +9,41 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       # session[:user_id] = @user.id
+
       if params[:remember_me]
         cookies.permanent[:auth_token] = @user.auth_token
-        print("Permmmmmmmmmmmmin   - #{params[:remember_me]}")
       else
         cookies[:auth_token] = @user.auth_token
-        print("regggggggggggmmmmmmmmmmmmin   - #{params[:remember_me]}")
       end
-
-
-      redirect_to '/search'
-
-      print("adding sessssssssion #{session[:user]}")
-      logger.info "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-      logger.info @user.id
-      logger.info "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-
+      respond_to do |format|
+        format.html { redirect_to '/search'}# index.html.erb
+        format.json { render status: :ok, json: {session: { id: @user.auth_token }} }
+      end
     else
       flash.now.alert = "Invalid email or password"
-      redirect_to '/login'
+      respond_to do |format|
+        format.html { redirect_to '/login'}# index.html.erb
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     # session[:user_id] = nil
+    print("Printing cookiessss-------- #{cookies}")
+
     cookies.delete(:auth_token)
-    redirect_to '/'
+    respond_to do |format|
+      format.html { redirect_to '/'}# index.html.erb
+      format.json { render status: :ok }
+    end
+
+  end
+
+  protected
+
+  def set_csrf_header
+    response.headers['XSRF-TOKEN'] = form_authenticity_token
   end
 
 end

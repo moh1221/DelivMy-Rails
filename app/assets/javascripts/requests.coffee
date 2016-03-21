@@ -4,8 +4,8 @@
 window.App ||= {}
 
 App.newPage =  ->
-  locFinder = new locationLoad();
-  locFinder.getAddress();
+  locFinder = new locationLoad()
+  locFinder.getAddress()
 
   $("#AddInfo").blur ->
     address = $("#AddInfo").val()

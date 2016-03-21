@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :require_user, only: [:index, :show, :update]
   before_filter :get_user
 
   def get_user

@@ -42,6 +42,7 @@ gem "font-awesome-rails"
 gem "geocoder"
 
 # AWS SDK for S3 Bucket
+gem "paperclip", "~> 4.2"
 gem "aws-sdk", '~> 1.5'
 
 # Location search

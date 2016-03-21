@@ -20,7 +20,11 @@ class Request < ActiveRecord::Base
   scope :current_delivery, ->(current) { joins(:deliver, :profile, :category, :location).where('delivers.user_id = ?', current ) }
   scope :recent_deliver , -> { order('delivers.request_id desc') }
 
-
-
+  # Search
+  valData = [:id, :PlaceName, :created_at, :cost, :fees, :delivery_at, :first_name, :last_name, :email, :CatName, :picture, :Lat, :Long, :address]
+  scope :selected_val, -> { select(valData) }
+  scope :search_filter, -> (current) { where('requests.delivery_at > ? and requests.user_id != ? and requests.status_id = 1', DateTime.now, current) }
+  scope :search_joins, -> { joins(:profile, :category, :location).includes(:items)}
+  scope :search_order, -> { order("requests.id DESC") }
 
 end
