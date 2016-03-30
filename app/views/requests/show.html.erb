@@ -8,7 +8,16 @@
         <div>
           <label for="place">Place Name:</label>
           <span id="place"><%= @request.PlaceName	  %></span>
-          <span class="pull-right">Status: <%= @deliver.status.status_info %></span>
+          <% if @deliver.nil? %>
+              <span class="pull-right">Status: None</span>
+              <% else %>'////'''''''''''''''''''''''
+              ''''''''''''
+
+              '''''
+              '''/;//,l.l ll klolp;.;;
+              <span class="pull-right">Status: <%= @deliver.status.status_info %></span>
+              <% end %>
+
         </div>
 
       </div>

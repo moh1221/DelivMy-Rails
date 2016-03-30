@@ -1,13 +1,22 @@
 class RequestsController < ApplicationController
 
   before_action :require_user, only: [:index, :new, :create]
+  # before_action :authenticate
 
   def index
     @requests = Request.select("requests.id, requests.PlaceName, requests.created_at, cost, fees, delivery_at, first_name, last_name, email, CatName, status_info").where('requests.user_id = ?', current_user)
                     .joins(:profile).joins(:status)
                     .joins(:category)
                     .order("status_info, delivery_at DESC")
+
+    @myRequests = Request.where('requests.user_id = ?', current_user).includes(:items)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @myRequests, except: [:user_id], include: {items: {only: :id}} }
+    end
   end
+
   def new
     @request = Request.new
     2.times {@request.items.build}
@@ -62,5 +71,28 @@ class RequestsController < ApplicationController
     params[:request][:status_id] = 1
     params.require(:request).permit(:user_id, :PlaceName, :status_id, :category_id, :cost, :fees, :delivery_at, items_attributes: [ :ItemsName, :ItemDescription ], location_attributes: [:address, :Lat, :Long])
   end
+
+  def authenticate
+    authenticate_token || render_unauthorized
+  end
+
+  def authenticate_token
+    print("request printing ---------- token" )
+
+    authenticate_or_request_with_http_token do |token, options|
+      User.find_by(auth_token: token)
+      print("request printing ---------- #{token}token" )
+    end
+  end
+
+  def render_unauthorized
+    self.headers['WWW-Authenticate'] = 'Token realm="Requests"'
+    respond_to do |format|
+      format.json { render json: 'Bad crendentials', status: 401}
+      format.html redirect '/'
+    end
+
+  end
+
 
 end

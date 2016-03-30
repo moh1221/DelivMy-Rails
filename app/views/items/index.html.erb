@@ -1,0 +1,16 @@
+<header style="background-color: white; color: black;text-align: left">
+  <div class="container">
+    <div class="row">
+      <ul>
+        <% @items.each do |item| %>
+            <li>
+              <h4><%= item.ItemsName %></h4>
+              <h4><%= item.ItemDescription %></h4>
+            </li>
+
+        <% end %>
+      </ul>
+
+      </div>
+    </div>
+  </header>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'items/index'
+
   resources :password_resets
 
   get 'uploads/new' => 'uploads#new', as: :new_uploads
@@ -32,7 +34,10 @@ Rails.application.routes.draw do
   delete '/requests/:id' => 'requests#destroy'
 
 
-  # resource :requests
+  resources :requests do
+    resources :items
+    resources :locations
+  end
 
   get '/delivers/new' => 'delivers#new', as: :new_delivers
   post '/delivers/new' => 'delivers#create'
