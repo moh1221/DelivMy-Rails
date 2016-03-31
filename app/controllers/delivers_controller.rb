@@ -4,6 +4,12 @@ class DeliversController < ApplicationController
 
   def index
     @delivers = Request.request_deliver_select.current_delivery(current_user).recent_deliver
+    @request = Request.joins(:deliver).where('delivers.user_id = ?', current_user )
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @request, except: [:user_id], include: [:deliver,{ profile: {only: [:first_name, :last_name, :picture]}} , {items: {only: :id}}] }
+    end
   end
 
   def new

@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     resources :locations
   end
 
+
+
   get '/delivers/new' => 'delivers#new', as: :new_delivers
   post '/delivers/new' => 'delivers#create'
   get '/delivers' => 'delivers#index'

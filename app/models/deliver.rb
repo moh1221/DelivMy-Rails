@@ -4,6 +4,8 @@ class Deliver < ActiveRecord::Base
   belongs_to :user
   belongs_to :request
   belongs_to :status
+  has_one :profile, :through => :user
+
 
   scope :recent, -> { order(:request_id)}
 
