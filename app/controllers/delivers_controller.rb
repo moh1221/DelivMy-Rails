@@ -4,11 +4,11 @@ class DeliversController < ApplicationController
 
   def index
     @delivers = Request.request_deliver_select.current_delivery(current_user).recent_deliver
-    @request = Request.joins(:deliver).where('delivers.user_id = ?', current_user )
+    @request = Request.joins(:deliver).where('delivers.user_id = ?', current_user ).includes(:items, :category, :profile)
 
     respond_to do |format|
       format.html
-      format.json { render json: @request, except: [:user_id], include: [:deliver,{ profile: {only: [:first_name, :last_name, :picture]}} , {items: {only: :id}}] }
+      format.json { render json: @request, include: [:deliver,{ profile: {only: [:first_name, :last_name, :picture]}} , {items: {only: :id}}, {category: {only: :CatName}}] }
     end
   end
 
@@ -32,6 +32,14 @@ class DeliversController < ApplicationController
 
   def show
     @request = Request.includes(:items, :location, :profile, :deliver).find(params[:id])
+
+    @requests = Request.find(params[:id])
+    @deliver = @requests.deliver
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @deliver, include: [:profile] }
+    end
   end
 
   private

@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       end
       respond_to do |format|
         format.html { redirect_to '/search'}# index.html.erb
-        format.json { render status: :ok, json: {session: { id: @user.auth_token }} }
+        format.json { render status: :ok, json: {session: { id: @user.auth_token, user_id: @user.id }} }
       end
     else
       flash.now.alert = "Invalid email or password"

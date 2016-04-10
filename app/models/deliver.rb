@@ -13,7 +13,7 @@ class Deliver < ActiveRecord::Base
   protected
 
   def set_deliv_status
-    self.deliv_Status = 1
+    self.status_id = 1
   end
 
 end

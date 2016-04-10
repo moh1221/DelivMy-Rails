@@ -9,11 +9,11 @@ class RequestsController < ApplicationController
                     .joins(:category)
                     .order("status_info, delivery_at DESC")
 
-    @myRequests = Request.where('requests.user_id = ?', current_user).includes(:items)
+    @myRequests = Request.where('requests.user_id = ?', current_user).includes(:items, :category, :deliver)
 
     respond_to do |format|
       format.html
-      format.json { render json: @myRequests, except: [:user_id], include: {items: {only: :id}} }
+      format.json { render json: @myRequests, include: [ {deliver: { include: [:profile]}}, {items: {only: :id}}, {category: {only: :CatName}}] }
     end
   end
 

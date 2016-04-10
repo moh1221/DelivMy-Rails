@@ -10,11 +10,7 @@
           <span id="place"><%= @request.PlaceName	  %></span>
           <% if @deliver.nil? %>
               <span class="pull-right">Status: None</span>
-              <% else %>'////'''''''''''''''''''''''
-              ''''''''''''
-
-              '''''
-              '''/;//,l.l ll klolp;.;;
+              <% else %>
               <span class="pull-right">Status: <%= @deliver.status.status_info %></span>
               <% end %>
 
