@@ -25,6 +25,7 @@ class Request < ActiveRecord::Base
   scope :selected_val, -> { select(valData) }
   scope :search_filter, -> (current) { where('requests.delivery_at > ? and requests.user_id != ? and requests.status_id = 1', DateTime.now, current) }
   scope :search_joins, -> { joins(:profile, :category, :location).includes(:items)}
+  scope :search_includes, -> { joins(:location).includes(:items, :category, :location ) }
   scope :search_order, -> { order("requests.id DESC") }
 
 end

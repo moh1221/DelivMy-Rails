@@ -20,10 +20,14 @@ class DeliversController < ApplicationController
     @deliver = Deliver.new(deliver_params)
 
     if @deliver.save
-      if @deliver.request.update(status_id: 2)
-        redirect_to '/delivers'
-      else
-        redirect_to deliver_path
+      respond_to do |format|
+        if @deliver.request.update(status_id: 2)
+          format.html { redirect_to '/delivers' }
+          format.json { render status => :ok, json: { message: "Success" }  }
+        else
+          format.html { redirect_to deliver_path}
+          format.json { render :json => @deliver.errors, :status => :unprocessable_entity }
+        end
       end
     else
       redirect_to deliver_path

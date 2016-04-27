@@ -77,7 +77,7 @@ App.indexPage = ->
     centreicon.shadowSize = new GSize 22, 20
     centreicon.iconAnchor = new GPoint 6, 20
     centreicon.infoWindowAnchor = new GPoint 5, 1
-    latlng = new GLatLng location.Lat, location.Long
+    latlng = new GLatLng location.location.Lat, location.location.Long
     marker = new GMarker latlng, centreicon
     handler = createMarkerClickHandler(marker, location)
     google.maps.event.addListener marker, "click", handler
