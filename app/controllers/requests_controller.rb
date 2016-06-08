@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    2.times {@request.items.build}
+    @request.items.build
     @request.build_location
     @category = Category.all
 
@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
       puts(@request.errors.any?)
       puts(@request.errors.count)
       puts(@request.errors.full_messages)
-      2.times {@request.items.build}
+      @request.items.build
       @request.build_location
       @category = Category.all
       render :action => 'new'

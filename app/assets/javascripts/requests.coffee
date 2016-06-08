@@ -12,6 +12,10 @@ App.newPage =  ->
     console.log("button clicked!")
     locFinder.getLatLng(address)
 
+  remove_fields = (link) ->
+    $(link).previous("input[type=hidden]").value = "1"
+    $(link).up(".fields").hide()
+
 
 App.showPage = ->
   $( "#timerInfo" ).text (v, e)->
@@ -32,6 +36,9 @@ $(document).on "page:change", ->
   App.newPage() if $(".requests.new").length > 0
   App.showPage() if $(".requests.show").length > 0
   App.indexPage() if $(".requests.index").length > 0
+  remove_fields = (link) ->
+    $(link).previous("input[type=hidden]").value = "1"
+    $(link).up(".fields").hide()
 
 
 

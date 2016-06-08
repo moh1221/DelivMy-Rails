@@ -3,8 +3,8 @@ class Request < ActiveRecord::Base
   has_many :items, dependent: :destroy
   has_one :location, dependent: :destroy
   has_one :deliver, dependent: :destroy
-  belongs_to :category
-  belongs_to :status
+  belongs_to :category, touch: true
+  belongs_to :status, touch: true
   has_one :profile, :through => :user
 
   acts_as_mappable :through => :location
