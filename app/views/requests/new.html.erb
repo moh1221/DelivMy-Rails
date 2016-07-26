@@ -33,15 +33,10 @@
 
         <div class="form-group has-feedback">
           <%= f.label "Step 4: Add Items" %>
-          <ul class="list-group">
             <%= f.fields_for :items do |item_form| %>
-                <li>
-                  <%= render "item_fields", :f => item_form  %>
-
-                </li>
+                <%= render "item_fields", :f => item_form  %>
+              <%= link_to_add_fields "<span><i class=\"glyphicon glyphicon-plus-sign\"></i> Add Item</span>".html_safe, f, :items %>
             <% end %>
-            <%= link_to_add_fields "<span><i class=\"glyphicon glyphicon-plus-sign\"></i> Add Item</span>".html_safe, f, :items %>
-          </ul>
 
         </div>
 
