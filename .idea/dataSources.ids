@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component name="dataSourceStorage">
-  <data-source name="Rails DelivMyApp: production" uuid="06b7efde-ba4e-4135-9893-f9b2942f1672">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source name="Rails DelivMyApp: development" uuid="20144e45-9138-4af2-9490-59a23c6ed657">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-</component>

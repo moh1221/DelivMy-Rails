@@ -1,28 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DelivMy Peer to Peer web application using Ruby on Rails and APIs for iOS swift application.
 
-Things you may want to cover:
+== System dependencies
 
-* Ruby version
+* MySQL
+* geocoder for Ruby
+* AWS SDK for S3 Bucket
+* Location search geokit-rails
 
-* System dependencies
+== Deployment instructions
 
-* Configuration
+    bundle install
 
-* Database creation
+== Migrate database
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    rake db:migrate
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Seeds
+To insert Categories
+
+    rake db:seed
