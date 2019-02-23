@@ -97,7 +97,7 @@ GEM
     mysql2 (0.4.3)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    paperclip (4.3.5)
+    paperclip (>= 5.2.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
@@ -184,7 +184,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (~> 0.4.2)
-  paperclip (~> 4.2)
+  paperclip (>= 5.2.0)
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
