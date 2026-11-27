@@ -33,15 +33,15 @@
             </div>
             <div class="section">
               <label for="address">Address: </label>
-              <div id="address"><%= @location.address	  %></div>
+              <div id="address"><%= Location::PRIVATE_ADDRESS_MESSAGE	  %></div>
             </div>
           </div>
           <div class="box-header">
             <div class="section" style="padding: 5px">
-              <span><i class="glyphicon glyphicon-time"></i> <span id="timerInfo"><%= @search.delivery_at %></span></span>
+              <span><i class="glyphicon glyphicon-time"></i> <%= delivery_timer(@search.delivery_at) %></span>
             </div>
           </div>
-          <%= link_to "Deliv It", new_delivers_path(request_id: @search.id), :class => "btn btn-block btn-flat", style: "background-color:#cc0038;color:white", :method => :post, data: { confirm: 'Are you sure?' }  %>
+          <%= button_to "Accept delivery", new_delivers_path, params: { request_id: @search.id }, class: "btn btn-primary btn-block", form: { data: { confirm: "Accept this delivery?" } } %>
 
         </div>
       </div>

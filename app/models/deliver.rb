@@ -1,19 +1,6 @@
-class Deliver < ActiveRecord::Base
-  before_create :set_deliv_status
-
-  belongs_to :user
-  belongs_to :request
+class Deliver < ApplicationRecord
+  belongs_to :user, inverse_of: :delivers
+  belongs_to :request, inverse_of: :deliver
   belongs_to :status
-  has_one :profile, :through => :user
-
-
-  scope :recent, -> { order(:request_id)}
-
-
-  protected
-
-  def set_deliv_status
-    self.status_id = 1
-  end
-
+  has_one :profile, through: :user
 end

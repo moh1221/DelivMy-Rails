@@ -1,2 +1,2 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
 end

@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :require_user
+
   def index
-    @request = Request.find(params[:request_id])
+    @request = readable_request(params[:request_id])
     @items = @request.items
 
     respond_to do |format|

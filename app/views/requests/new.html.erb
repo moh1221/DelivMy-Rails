@@ -6,11 +6,11 @@
   <div class="box-header">Submit Request</div>
   <div class="box-body">
 
-    <%= form_for (@request) do |f| %>
+    <%= form_for(@request) do |f| %>
 
         <div class="form-group">
           <%= f.label "Step 1: Select Category" %>
-          <%= f.collection_select :category_id, @category, :id, :CatName, :class => 'form-control'%>
+          <%= f.collection_select :category_id, @category, :id, :CatName, {}, :class => 'form-control'%>
         </div>
         <div class="form-group has-feedback">
           <%= f.label "Step 2: Select Place Name" %>
@@ -33,10 +33,17 @@
 
         <div class="form-group has-feedback">
           <%= f.label "Step 4: Add Items" %>
+          <div id="request-items">
             <%= f.fields_for :items do |item_form| %>
-                <%= render "item_fields", :f => item_form  %>
-              <%= link_to_add_fields "<span><i class=\"glyphicon glyphicon-plus-sign\"></i> Add Item</span>".html_safe, f, :items %>
+              <%= render "item_fields", f: item_form %>
             <% end %>
+          </div>
+          <template id="request-item-template">
+            <%= f.fields_for :items, Item.new, child_index: "NEW_ITEM" do |item_form| %>
+              <%= render "item_fields", f: item_form %>
+            <% end %>
+          </template>
+          <button type="button" class="btn btn-outline-secondary" data-add-item>Add item</button>
 
         </div>
 
@@ -50,17 +57,17 @@
 
         <div class="form-group has-feedback">
           <%= f.label "Step 6: Add Total Cost and Delivery Tip" %>
-          <%= f.number_field :cost, :class => 'form-control', :placeholder => '$ Total Cost' %>
+          <%= f.number_field :cost, :class => 'form-control', :placeholder => '$ Total Cost', min: 0, step: '0.01' %>
         </div>
         <div class="form-group has-feedback">
-          <%= f.number_field :fees, :class => 'form-control', :placeholder => '$ Add Tip' %>
+          <%= f.number_field :fees, :class => 'form-control', :placeholder => '$ Add Tip', min: 0, step: '0.01' %>
         </div>
 
         <% if @request.errors.any? %>
         <div id="error_messages">
               <span style="color: red">
                 <%= pluralize(@request.errors.count, "error") %> prohibited
-                this user from being added:
+                this request from being added:
               </span>
           <ul>
             <% @request.errors.full_messages.each do |msg| %>

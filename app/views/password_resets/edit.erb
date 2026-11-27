@@ -4,7 +4,8 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="box">
           <div class="box-body">
-            <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+            <%= form_for @user, :url => password_resets_path, method: :patch do |f| %>
+                <%= hidden_field_tag :token, @token %>
                 <% if @user.errors.any? %>
                     <div class="error_messages">
                       <h2>Form is invalid</h2>

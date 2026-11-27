@@ -1,12 +1,9 @@
 class LocationsController < ApplicationController
+  before_action :require_user
 
   def index
-    @request = Request.find(params[:request_id])
-    @location = @request.location
-
-    respond_to do |format|
-      format.json { render json: @location, except: [:updated_at] }
-    end
-
+    order = readable_request(params[:request_id])
+    data = order.participant?(current_user) ? order.location&.as_json(except: [:updated_at]) : order.location&.listing_payload
+    render json: data
   end
 end

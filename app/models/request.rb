@@ -1,31 +1,73 @@
-class Request < ActiveRecord::Base
-  belongs_to :user
-  has_many :items, dependent: :destroy
-  has_one :location, dependent: :destroy
-  has_one :deliver, dependent: :destroy
-  belongs_to :category, touch: true
-  belongs_to :status, touch: true
-  has_one :profile, :through => :user
+class Request < ApplicationRecord
+  class Unavailable < StandardError; end
 
-  acts_as_mappable :through => :location
+  belongs_to :user, inverse_of: :requests
+  has_many :items, inverse_of: :request, dependent: :destroy
+  has_one :location, inverse_of: :request, dependent: :destroy
+  has_one :deliver, inverse_of: :request, dependent: :destroy
+  belongs_to :category
+  belongs_to :status
+  has_one :profile, through: :user
 
-  accepts_nested_attributes_for :items, reject_if: lambda {|attributes| attributes['ItemsName'].blank?}
-  accepts_nested_attributes_for :location, reject_if: lambda {|attributes| attributes['address'].blank?}
-  accepts_nested_attributes_for :location, reject_if: lambda {|attributes| attributes['Lat'].blank?}
+  accepts_nested_attributes_for :items, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :location, reject_if: :all_blank
 
-  validates :PlaceName, :cost, :fees, presence: true
+  validates :PlaceName, :delivery_at, :location, presence: true
+  validates :cost, :fees, numericality: { greater_than_or_equal_to: 0 }
+  validates :items, length: { minimum: 1 }
+  validate :delivery_is_in_future, on: :create
 
+  scope :open, -> { where(status_id: Status::OPEN).where("delivery_at > ?", Time.current) }
+  scope :for_search, ->(user) { open.where.not(user_id: user.id).joins(:location).includes(:items, :category, :location, :profile).order(id: :desc) }
 
-  scope :request_deliver_select, -> { select(:id, :PlaceName, :created_at, :cost, :fees, :delivery_at, :first_name, :last_name, :email, :CatName, :picture, :Lat, :Long, :receipt_img ) }
-  scope :current_delivery, ->(current) { joins(:deliver, :profile, :category, :location).where('delivers.user_id = ?', current ) }
-  scope :recent_deliver , -> { order('delivers.request_id desc') }
+  def self.in_bounds(south, west, north, east)
+    bounds = Location.arel_table
+    radius = Arel::Nodes.build_quoted(Location::PUBLIC_PRECISION)
+    latitude = Arel::Nodes::NamedFunction.new("ROUND", [bounds[:Lat], radius])
+    longitude_degrees = Arel::Nodes::NamedFunction.new("ROUND", [bounds[:Long], radius])
+    longitude = if west <= east
+      longitude_degrees.between(west..east)
+    else
+      longitude_degrees.gteq(west).or(longitude_degrees.lteq(east))
+    end
 
-  # Search
-  valData = [:id, :PlaceName, :created_at, :cost, :fees, :delivery_at, :first_name, :last_name, :email, :CatName, :picture, :Lat, :Long, :address]
-  scope :selected_val, -> { select(valData) }
-  scope :search_filter, -> (current) { where('requests.delivery_at > ? and requests.user_id != ? and requests.status_id = 1', DateTime.now, current) }
-  scope :search_joins, -> { joins(:profile, :category, :location).includes(:items)}
-  scope :search_includes, -> { joins(:location).includes(:items, :category, :location ) }
-  scope :search_order, -> { order("requests.id DESC") }
+    where(latitude.between(south..north).and(longitude))
+  end
 
+  def available?
+    status_id == Status::OPEN && delivery_at&.future? && deliver.nil?
+  end
+
+  def readable_by?(user)
+    participant?(user) || available?
+  end
+
+  def participant?(user)
+    user_id == user.id || deliver&.user_id == user.id
+  end
+
+  def accept_by!(courier)
+    with_lock do
+      raise Unavailable, "You cannot accept your own request." if user_id == courier.id
+      raise Unavailable, "This request is no longer available." unless available?
+
+      create_deliver!(user: courier, status_id: Status::OPEN)
+      update!(status_id: Status::IN_PROGRESS)
+    end
+    deliver
+  end
+
+  def cancel!
+    with_lock do
+      raise Unavailable, "An accepted request cannot be deleted." unless status_id == Status::OPEN && deliver.nil?
+
+      destroy!
+    end
+  end
+
+  private
+
+  def delivery_is_in_future
+    errors.add(:delivery_at, "must be in the future") if delivery_at && !delivery_at.future?
+  end
 end

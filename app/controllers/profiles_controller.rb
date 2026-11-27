@@ -1,30 +1,23 @@
 class ProfilesController < ApplicationController
-  before_action :require_user, only: [:index, :show, :update]
-  before_filter :get_user
-
-  def get_user
-    @user = current_user
-  end
-
-  def index
-  end
+  before_action :require_user
 
   def show
-    @profile = @user.profile
-    @requests = Request.where(user_id: current_user.uuid).count
-    @delivers = Deliver.where(user_id: current_user.uuid).count
-  end
-
-  def new
+    @user = current_user
+    @profile = @user.profile || @user.build_profile
+    @requests = @user.requests.count
+    @delivers = @user.delivers.count
   end
 
   def update
-    @user.profile.update_attributes(profile_params)
-    redirect_to user_path
-  end
-
-  private
-  def profile_params
-    params.require(:user).permit(:picture, :work, :home)
+    @user = current_user
+    @profile = @user.profile || @user.build_profile
+    if @profile.update(params.expect(profile: [:first_name, :last_name, :home, :work]))
+      redirect_to profile_path, notice: "Profile updated.", status: :see_other
+    else
+      @requests = @user.requests.count
+      @delivers = @user.delivers.count
+      flash.now.alert = @profile.errors.full_messages.to_sentence
+      render :show, status: :unprocessable_content
+    end
   end
 end

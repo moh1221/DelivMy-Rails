@@ -1,37 +1,29 @@
-class User < ActiveRecord::Base
-  has_secure_password
+class User < ApplicationRecord
+  self.primary_key = :uuid
 
-  before_create { generate_token(:auth_token)}
+  has_secure_password reset_token: false
+  before_validation :assign_uuid, on: :create
+  normalizes :email, with: ->(email) { email.strip.downcase }
 
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :password, length: { minimum: 8 }, if: :password_digest_changed?
+  validates :profile, presence: true, on: :create
 
-
-
-  validates :email, uniqueness: true, presence: true
-  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
-  # validates :password, :length => {minimum: 8}
-
-  include UuidHelper
-  has_many :requests
-  has_many :delivers
-  has_one :profile, dependent: :destroy
-  accepts_nested_attributes_for :profile
-
+  has_many :requests, inverse_of: :user
+  has_many :delivers, inverse_of: :user
+  has_many :authentication_sessions, dependent: :delete_all, inverse_of: :user
+  has_one :profile, inverse_of: :user, dependent: :destroy
+  accepts_nested_attributes_for :profile, update_only: true
 
   def send_password_reset
-    generate_token(:password_reset_token)
-    self.password_reset_sent_at = Time.zone.now
-    save!
-    UserMailer.password_reset(self).deliver_now
+    token = SecureRandom.urlsafe_base64(32)
+    update!(password_reset_token: AuthenticationSession.digest(token), password_reset_sent_at: Time.current)
+    UserMailer.password_reset(self, token).deliver_now
   end
 
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.uuid.gsub(/\-/,'') #SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
-  end
+  private
 
-  def author?
-    self.role == "author"
+  def assign_uuid
+    self.uuid ||= SecureRandom.uuid.upcase
   end
-
 end

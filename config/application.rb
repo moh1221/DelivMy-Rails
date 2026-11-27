@@ -1,32 +1,24 @@
-require File.expand_path('../boot', __FILE__)
+require_relative "boot"
 
-require 'rails/all'
+%w[rails active_model/railtie active_job/railtie active_record/railtie
+   active_storage/engine action_controller/railtie action_mailer/railtie
+   action_view/railtie rails/test_unit/railtie].each { |component| require component }
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module DelivMyApp
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    config.time_zone = 'Central Time (US & Canada)'
-
-
-    config.force_ssl = true
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
-
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
-    config.autoload_paths += %W(#{config.root}/lib)
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
-    config.autoload_paths << "#{config.root}/lib"
+    config.load_defaults 8.1
+    config.time_zone = "Central Time (US & Canada)"
+    config.active_job.queue_adapter = :async
+    config.active_storage.analyzers = []
+    config.active_storage.track_variants = false
+    config.action_dispatch.show_exceptions = :rescuable
+    config.action_controller.forgery_protection_origin_check = true
+    config.action_dispatch.default_headers["Referrer-Policy"] = "same-origin"
+    config.action_controller.wrap_parameters_by_default = false
+    # The committed schema is portable; avoid replacing MySQL bigint definitions with SQLite aliases.
+    config.active_record.dump_schema_after_migration = false
+    config.middleware.use Rack::Attack
   end
 end
