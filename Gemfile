@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby file: ".ruby-version"
 
 gem "rails", "8.1.4.1"
-gem "puma", "~> 7.0"
+gem "puma", "~> 8.1"
 gem "sprockets-rails", "~> 3.5"
 gem "bcrypt", "~> 3.1"
 gem "rack-attack", "~> 6.8"
