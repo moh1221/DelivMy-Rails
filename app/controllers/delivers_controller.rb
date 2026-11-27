@@ -1,54 +1,46 @@
 class DeliversController < ApplicationController
-
-  before_action :require_user, only: [:index, :new, :create]
+  before_action :require_user
+  skip_forgery_protection if: -> { action_name == "create" && bearer_authenticated? }
 
   def index
-    @delivers = Request.request_deliver_select.current_delivery(current_user).recent_deliver
-    @request = Request.joins(:deliver).where('delivers.user_id = ?', current_user ).includes(:items, :category, :profile)
+    @delivers = Request.joins(:deliver).where(delivers: { user_id: current_user.id })
+      .includes(:items, :category, profile: { avatar_attachment: :blob }, deliver: { profile: { avatar_attachment: :blob } })
+      .order(id: :desc)
 
     respond_to do |format|
       format.html
-      format.json { render json: @request, include: [:deliver,{ profile: {only: [:first_name, :last_name, :picture]}} , {items: {only: :id}}, {category: {only: :CatName}}] }
+      format.json do
+        presenter = RequestPayload.new(view_context)
+        render json: @delivers.map { |order| presenter.order(order, delivery: true, profile: true) }
+      end
     end
   end
 
   def new
-    @deliver = Deliver.new
+    redirect_to search_path
   end
 
   def create
-    @deliver = Deliver.new(deliver_params)
+    order = Request.find(params.expect(:request_id))
+    order.accept_by!(current_user)
 
-    if @deliver.save
-      respond_to do |format|
-        if @deliver.request.update(status_id: 2)
-          format.html { redirect_to '/delivers' }
-          format.json { render status => :ok, json: { message: "Success" }  }
-        else
-          format.html { redirect_to deliver_path}
-          format.json { render :json => @deliver.errors, :status => :unprocessable_entity }
-        end
-      end
-    else
-      redirect_to deliver_path
+    respond_to do |format|
+      format.html { redirect_to delivers_path, status: :see_other }
+      format.json { render json: { message: "Success" } }
     end
+  rescue Request::Unavailable, ActiveRecord::RecordNotUnique, ActiveRecord::LockWaitTimeout => error
+    message = error.is_a?(Request::Unavailable) ? error.message : "This request is no longer available."
+    render_conflict(message, redirect: search_path)
   end
 
   def show
-    @request = Request.includes(:items, :location, :profile, :deliver).find(params[:id])
-
-    @requests = Request.find(params[:id])
-    @deliver = @requests.deliver
+    @request = Request.includes(:items, :location).joins(:deliver)
+      .where("requests.user_id = :id OR delivers.user_id = :id", id: current_user.id).find(params[:id])
+    @deliver = @request.deliver
 
     respond_to do |format|
       format.html
-      format.json { render json: @deliver, include: [:profile] }
+      format.json { render json: RequestPayload.new(view_context).courier(@deliver) }
     end
-  end
-
-  private
-  def deliver_params
-    params[:user_id] = current_user.uuid
-    params.permit(:request_id, :user_id, :deliv_Status, :receipt_img, :completed_at)
   end
 end

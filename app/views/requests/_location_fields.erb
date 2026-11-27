@@ -1,4 +1,8 @@
-<%= f.text_field :address, :class => 'form-control', :placeholder => 'Search', :id => 'AddInfo'	 %>
-<%= f.text_field :Lat, :class => 'form-control', :placeholder => 'Lat'	, :id => 'LatInfo'%>
-<%= f.text_field :Long, :class => 'form-control', :placeholder => 'Long'	, :id => 'LongInfo' %>
-<hr>
+<%= f.label :address, "Pickup address" %>
+<%= f.text_field :address, class: "form-control", id: "AddInfo", required: true %>
+<%= f.label :Lat, "Latitude" %>
+<%= f.number_field :Lat, class: "form-control", min: -90, max: 90, step: "any", id: "LatInfo", required: true %>
+<%= f.label :Long, "Longitude" %>
+<%= f.number_field :Long, class: "form-control", min: -180, max: 180, step: "any", id: "LongInfo", required: true %>
+<button type="button" class="btn btn-link" data-locate>Use my current coordinates</button>
+<p id="location-status" role="status"></p>

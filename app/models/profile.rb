@@ -1,4 +1,6 @@
-class Profile < ActiveRecord::Base
-  belongs_to :user
-  validates :first_name, :last_name, :length => { :minimum => 2, maximum: 30 }, presence: true
+class Profile < ApplicationRecord
+  belongs_to :user, inverse_of: :profile
+  has_one_attached :avatar
+
+  validates :first_name, :last_name, presence: true, length: { in: 2..30 }
 end

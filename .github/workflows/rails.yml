@@ -1,0 +1,54 @@
+name: Rails checks
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  sqlite:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: production
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bin/rails db:prepare
+        env:
+          RAILS_ENV: test
+      - run: bin/rails zeitwerk:check
+      - run: bin/rails test
+      - run: bin/rails assets:precompile
+        env:
+          RAILS_ENV: production
+          SECRET_KEY_BASE_DUMMY: 1
+
+  mysql:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: local-ci-only
+          MYSQL_ROOT_HOST: '%'
+          MYSQL_DATABASE: delivmy_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=12
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: mysql2://root:local-ci-only@127.0.0.1:3306/delivmy_test
+    steps:
+      - uses: actions/checkout@v6
+      - run: sudo apt-get update && sudo apt-get install -y default-libmysqlclient-dev
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bin/rails db:schema:load
+      - run: bin/rails test

@@ -8,18 +8,18 @@
               <div class="box-header">
                 <span class="text-uppercase large bold" style="font-weight: bold; font-size:140%; font-family: Arial">
                   <%= f.PlaceName	  %>
-                  <span style="color: lightgray; font-size: 50%"><%= f.CatName %></span>
+                  <span style="color: lightgray; font-size: 50%"><%= f.category&.CatName %></span>
                 </span>
-                <span class="pull-right" style="color:lightslategray"><i class="glyphicon glyphicon-time"></i> <span class="timerInfo"><%= f.delivery_at %></span></span>
+                <span class="pull-right" style="color:lightslategray"><i class="glyphicon glyphicon-time"></i> <%= delivery_timer(f.delivery_at) %></span>
               </div>
               <div class="box-body">
                 <div class="section">
-                  <span class="text" style="font-size: 120%"><%= f.first_name	  %>  <%= f.last_name	  %></span>
+                  <span class="text" style="font-size: 120%"><%= f.profile&.first_name	  %>  <%= f.profile&.last_name	  %></span>
                   <span id="fees" class="label label-success pull-right"  style="padding: 3px">$ <%= f.fees %></span>
-                  <% if f.status_info == 'On Progress' %>
-                      <span class="pull-right" style="font-size: 70%;color: gray;padding: 3px"><i class="fa fa-refresh fa-spin" style="color:orange"></i>  <%= f.status_info %>  </span>
+                  <% if f.status&.status_info == 'On Progress' %>
+                      <span class="pull-right" style="font-size: 70%;color: gray;padding: 3px"><i class="fa fa-refresh fa-spin" style="color:orange"></i>  <%= f.status&.status_info %>  </span>
                 <% else %>
-                      <span class="pull-right" style="font-size: 70%;color: gray;padding: 3px">  <%= f.status_info %>  </span>
+                      <span class="pull-right" style="font-size: 70%;color: gray;padding: 3px">  <%= f.status&.status_info %>  </span>
                 <% end %>
                    </div>
                 <div class="section">

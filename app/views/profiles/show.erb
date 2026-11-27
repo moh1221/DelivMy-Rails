@@ -8,10 +8,10 @@
           <h6 class="widget-user-desc"><%= @user.email %></h6>
         </div>
         <div class="widget-user-image">
-          <% if @profile.picture.nil? %>
+          <% if profile_image_path(@profile).nil? %>
               <%= link_to image_tag('user.jpg', class: "img-circle"), new_uploads_path , class: "userImage img-circle" %>
           <% else %>
-              <a class="userImage" href="/uploads/new"><img class="img-circle" src="<%= @profile.picture %>" alt="User Avatar"></a>
+              <a class="userImage" href="/uploads/new"><img class="img-circle" src="<%= profile_image_path(@profile) %>" alt="User Avatar"></a>
           <% end %>
         </div>
           <div class="box-footer">
@@ -34,8 +34,7 @@
             <!-- /.col -->
             <div class="col-sm-4">
               <div class="description-block">
-                <h5 class="description-header">99%</h5>
-                <span class="description-text">Review</span>
+                <%= link_to "Account settings", user_path %>
               </div>
               <!-- /.description-block -->
             </div>
@@ -47,13 +46,15 @@
 
       <h5 style="color: gray">Member since <%= @user.created_at.strftime("%b %Y") %></h5>
 
-      <%= form_for(@profile) do |f| %>
+      <%= form_for(@profile, url: profile_path, method: :patch) do |f| %>
+          <%= f.label :first_name %><%= f.text_field :first_name, class: "form-control" %>
+          <%= f.label :last_name %><%= f.text_field :last_name, class: "form-control" %>
           <div class="form-group has-feedback">
-            <%= f.text_field :home, :class => 'form-control',:placeholder => "Work Address" %>
+            <%= f.text_field :home, :class => 'form-control',:placeholder => "Home Address" %>
             <span class="glyphicon glyphicon-home form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <%= f.text_field :work, :class => 'form-control',:placeholder => "Home Address" %>
+            <%= f.text_field :work, :class => 'form-control',:placeholder => "Work Address" %>
             <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
           </div>
           <%= f.submit "Update", class: "btn btn-primary btn-block btn-flat" %>

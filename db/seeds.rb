@@ -1,20 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+{ Status::OPEN => "Open", Status::IN_PROGRESS => "On Progress" }.each do |id, label|
+  Status.find_or_create_by!(id: id) { |status| status.status_info = label }
+end
 
-Category.create(CatName: "Fast Food")
-Category.create(CatName: "Bakery")
-Category.create(CatName: "Book Store")
-Category.create(CatName: "Electronic")
-Category.create(CatName: "Furniture")
-Category.create(CatName: "Hair Care")
-Category.create(CatName: "Hardware")
-Category.create(CatName: "Home Goods")
-Category.create(CatName: "laundry")
-Category.create(CatName: "Pet Store")
-Category.create(CatName: "Pharmacy")
-Category.create(CatName: "Restaurant")
+["Fast Food", "Bakery", "Book Store", "Electronics", "Furniture", "Hair Care",
+ "Hardware", "Home Goods", "Laundry", "Pet Store", "Pharmacy", "Restaurant"].each do |name|
+  Category.find_or_create_by!(CatName: name)
+end

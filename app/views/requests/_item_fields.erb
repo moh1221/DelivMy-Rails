@@ -1,5 +1,8 @@
-<p class="fields">
-  <%= f.text_field :ItemsName, :class => 'form-control', :placeholder => 'Item'	 %>
-  <%= f.text_field :ItemDescription, :class => 'form-control', :placeholder => 'Description'	 %>
-  <%= link_to_remove_fields "Remove", f %>
-</p>
+<div class="fields">
+  <%= f.label :ItemsName, "Item" %>
+  <%= f.text_field :ItemsName, class: "form-control", placeholder: "Item name" %>
+  <%= f.label :ItemDescription, "Description" %>
+  <%= f.text_field :ItemDescription, class: "form-control", placeholder: "Optional details" %>
+  <%= f.hidden_field :_destroy %>
+  <button type="button" class="btn btn-link" data-remove-item>Remove item</button>
+</div>

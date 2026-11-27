@@ -33,31 +33,18 @@
             </div>
             <div class="section">
               <label for="address">Address: </label>
-              <div id="address"><%= @request.location.address	  %></div>
+              <div id="address"><%= @request.location&.address	  %></div>
             </div>
             <hr>
-            <div class="section" onclick="alert('hello')">
-              <h5>
-                <% if @request.deliver.receipt_img.nil? %>
-                <i class="glyphicon glyphicon-remove-circle" style="opacity: 0.8;color: red"></i>
-                <% else %>
-                    <i class="glyphicon glyphicon-ok-circle" style="opacity: 0.8;color: green"></i>
-              <% end %>
-                    Upload Receipt
-              <i class="glyphicon glyphicon-menu-right pull-right"></i>
-              </h5>
-            </div>
-            <hr>
-            <div class="section" >
-              <label for="receipt">Deliv Completed: </label>
-              <a id="receipt" class="btn btn-block" style="background-color:#cc0038;color:white">Submit</a>
-            </div>
+            <p>Delivery status: <%= @deliver.status&.status_info || "Unknown" %></p>
+            <% if (receipt_url = safe_https_url(@deliver.receipt_img)) %>
+              <p><%= link_to "View receipt", receipt_url, rel: "noreferrer" %></p>
+            <% end %>
           </div>
           <div class="box-header">
             <div class="section" style="padding: 5px">
-              <span><i class="glyphicon glyphicon-time"></i> <span id="timerInfo"><%= @request.delivery_at %></span></span>
+              <span><i class="glyphicon glyphicon-time"></i> <%= delivery_timer(@request.delivery_at) %></span>
 
-              <%= link_to "<span class='pull-right'> Report issue?</span>".html_safe, @request, method: :delete, data: { confirm: 'Are you sure?' } %>
               <span id="notice" class="pull-right" style="color: red;font-size: 70%; margin-right: 5px"><%= notice %></span>
             </div>
            </div>

@@ -1,4 +1,4 @@
-class CreateDelivers < ActiveRecord::Migration
+class CreateDelivers < ActiveRecord::Migration[4.2]
   def change
     create_table :delivers do |t|
       t.integer :request_id, null: false

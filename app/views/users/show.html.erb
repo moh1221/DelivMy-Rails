@@ -1,25 +1,11 @@
-<header style="background-color: white; color: black;text-align: left">
-<div class="login-box">
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-    <!-- Your form here -->
-    <%= form_for(@user) do |f| %>
-
-        <div class="form-group has-feedback">
-        <%= f.text_field :first_name, :placeholder => 'First Name' %>
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
-
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email %>
-
-        <%= f.submit "Update my account" %>
-    <% end %>
-
-  </div>
-</div>
-  </header>
-
+<header class="container">
+  <h1>Account settings</h1>
+  <% if @user.errors.any? %><p class="alert alert-danger"><%= @user.errors.full_messages.to_sentence %></p><% end %>
+  <%= form_for(@user, url: user_path, method: :patch) do |f| %>
+    <div class="form-group"><%= f.label :email %><%= f.email_field :email, class: "form-control", required: true %></div>
+    <div class="form-group"><%= f.label :current_password %><%= f.password_field :current_password, class: "form-control", required: true, autocomplete: "current-password" %></div>
+    <div class="form-group"><%= f.label :password, "New password (optional)" %><%= f.password_field :password, class: "form-control", autocomplete: "new-password" %></div>
+    <div class="form-group"><%= f.label :password_confirmation, "Confirm new password" %><%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %></div>
+    <%= f.submit "Update account", class: "btn btn-primary" %>
+  <% end %>
+</header>

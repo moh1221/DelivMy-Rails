@@ -1,66 +1,46 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>DelivMyApp</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <%= stylesheet_link_tag    'application',params[:controller], media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track' => true %>
+  <title>DelivMy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <script
-  src="https://maps.google.com/maps?file=api&v=2.x"
-  type="text/javascript"></script>
+  <%= stylesheet_link_tag "bootstrap.min", "application" %>
+  <%= javascript_include_tag "application", defer: true %>
 </head>
-<body  id="page-top" class="<%= controller_name %> <%= action_name %>">
-  <nav class="navbar navbar-default navbar-fixed-top">
+<body class="<%= controller_name %> <%= action_name %>">
+  <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
     <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">DelivMy App</a>
+      <%= link_to "DelivMy", root_path, class: "navbar-brand" %>
+      <button type="button" class="navbar-toggler" data-menu-toggle aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+      <div class="collapse navbar-collapse" id="primary-navigation">
+        <ul class="navbar-nav me-auto">
+          <% if current_user %>
+            <li><%= link_to "Search", search_path, class: "nav-link" %></li>
+            <li><%= link_to "My Requests", requests_path, class: "nav-link" %></li>
+            <li><%= link_to "New Request", new_request_path, class: "nav-link" %></li>
+            <li><%= link_to "My Deliveries", delivers_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+        <ul class="navbar-nav">
+          <% if current_user %>
+            <li><%= link_to "Profile", profile_path, class: "nav-link" %></li>
+            <li><%= button_to "Log out", logout_path, method: :delete, class: "btn btn-link nav-link" %></li>
+          <% else %>
+            <li><%= link_to "Login", login_path, class: "nav-link" %></li>
+            <li><%= link_to "Sign up", signup_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <% if current_user %>
-            <ul class="nav navbar-nav">
-              <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-search'></i> Search</span>".html_safe, 	search_path  %></li>
-              <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-arrow-up'></i> My Request</span>".html_safe, requests_path	  %></li>
-              <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-plus-sign'></i> Request</span>".html_safe, requests_new_path	  %></li>
-              <li class="page-scroll"><%= link_to "<span><i class='glyphicon glyphicon-arrow-down'></i> My Deliv</span>".html_safe, delivers_path %></li>
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="hidden">
-                <a href="#page-top"></a>
-              </li>
-
-              <li class="page-scroll small"><a style="font-size: 75%"><%= current_user.email %></a></li>
-              <li class="page-scroll small"><%= link_to "<span><i class='fa fa-user'></i> Profile</span>".html_safe, profile_path %></li>
-              <li class="page-scroll small"><%= link_to "<span><i class='glyphicon glyphicon-lock'></i> Log out</span>".html_safe, logout_path, method: "delete" %></li>
-            </ul>
-        <% else %>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="hidden">
-                <a href="#page-top"></a>
-              </li>
-              <li class="page-scroll"><%= link_to "Login", 'login' %></li>
-              <li class="page-scroll"><%= link_to "Signup", 'signup' %></li>
-            </ul>
-        <% end %>
-      </div>
-      <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
   </nav>
-
-<%= yield %>
-
+  <main>
+    <% if notice.present? %><div class="alert alert-success" role="status"><%= notice %></div><% end %>
+    <% if alert.present? %><div class="alert alert-danger" role="alert"><%= alert %></div><% end %>
+    <%= yield %>
+  </main>
+  <% if ENV["GOOGLE_MAPS_BROWSER_KEY"].present? && ((controller_name == "search" && action_name == "index") || (controller_name == "requests" && %w[new create].include?(action_name))) %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?#{ { key: ENV['GOOGLE_MAPS_BROWSER_KEY'], callback: 'initializeDelivMap', loading: 'async' }.to_query }", defer: true %>
+  <% end %>
 </body>
 </html>
